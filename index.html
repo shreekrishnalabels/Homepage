@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Shree Krishna Labels | Premium Garment Branding &amp; Trims</title>
+<meta content="Shree Krishna Labels — premium woven labels, hang tags, barcode stickers, heat transfers, PVC patches, wash care labels and garment trims manufacturer for fashion brands." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-fixed": "#071d30",
+                "surface-container": "#f0eee9",
+                "secondary-fixed-dim": "#cdc5bb",
+                "on-tertiary-container": "#7b8ea6",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed-variant": "#4b463e",
+                "inverse-on-surface": "#f2f1ec",
+                "surface-container-highest": "#e4e2dd",
+                "tertiary-fixed": "#d0e4ff",
+                "surface-container-low": "#f5f3ee",
+                "background": "#fbf9f4",
+                "surface": "#fbf9f4",
+                "on-primary-fixed": "#201a17",
+                "primary-fixed": "#ece0da",
+                "on-surface": "#1b1c19",
+                "on-error-container": "#93000a",
+                "primary": "#140f0c",
+                "surface-variant": "#e4e2dd",
+                "secondary-fixed": "#eae1d6",
+                "tertiary": "#001223",
+                "error-container": "#ffdad6",
+                "on-primary-fixed-variant": "#4d4541",
+                "surface-bright": "#fbf9f4",
+                "inverse-primary": "#cfc4be",
+                "on-primary": "#ffffff",
+                "secondary-container": "#e7ded3",
+                "outline-variant": "#d0c4bd",
+                "tertiary-container": "#13273a",
+                "outline": "#7f756f",
+                "on-surface-variant": "#4d4540",
+                "on-secondary-fixed": "#1f1b14",
+                "on-primary-container": "#948a85",
+                "on-tertiary-fixed-variant": "#35485d",
+                "on-background": "#1b1c19",
+                "surface-dim": "#dbdad5",
+                "inverse-surface": "#30312e",
+                "on-tertiary": "#ffffff",
+                "primary-container": "#2a2420",
+                "surface-container-lowest": "#ffffff",
+                "on-error": "#ffffff",
+                "tertiary-fixed-dim": "#b4c8e2",
+                "surface-container-high": "#eae8e3",
+                "primary-fixed-dim": "#cfc4be",
+                "surface-tint": "#655d58",
+                "secondary": "#635e55",
+                "error": "#ba1a1a",
+                "on-secondary-container": "#676259"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "fontFamily": {
+                "sans": ["Inter", "sans-serif"],
+                "serif": ["Playfair Display", "serif"],
+                "title-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-xl": ["Playfair Display"],
+                "display-lg": ["Playfair Display"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root{
+    --surface:#fbf9f4;
+    --surface-container:#f0eee9;
+    --surface-low:#f5f3ee;
+    --surface-high:#e4e2dd;
+    --ink:#140f0c;
+    --ink-soft:#4d4540;
+    --outline:#d0c4bd;
+    --outline-strong:#7f756f;
+    --tailor-blue:#35485d;
+    --dark:#140f0c;
+    --white:#fff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--surface);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.045;
+    z-index:9999;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  }
+  .font-serif{font-family:'Playfair Display',serif}
+  .luxury-grid{
+    background-image:linear-gradient(to right,rgba(127,117,111,.07) 1px,transparent 1px),linear-gradient(to bottom,rgba(127,117,111,.07) 1px,transparent 1px);
+    background-size:96px 96px;
+  }
+  .nav-blur{backdrop-filter:blur(16px);background:rgba(251,249,244,.82);border-color:rgba(208,196,189,.55)}
+  .cursor-dot{width:8px;height:8px;background:var(--ink);position:fixed;border-radius:50%;pointer-events:none;z-index:10000;transition:transform .1s}
+  .product-card{transition:transform .55s cubic-bezier(.23,1,.32,1),border-color .35s,box-shadow .35s;background:rgba(255,255,255,.66);border:1px solid rgba(208,196,189,.72);backdrop-filter:blur(8px)}
+  .product-card:hover{transform:translateY(-8px);box-shadow:0 22px 44px rgba(42,36,32,.08);border-color:rgba(127,117,111,.5)}
+  .btn-atelier{position:relative;overflow:hidden}
+  .btn-atelier::after{content:'';position:absolute;bottom:.75rem;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s ease}
+  .btn-atelier:hover::after{transform:scaleX(1);transform-origin:left}
+  .marquee-text{white-space:nowrap;animation:marquee 42s linear infinite}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  #three-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;opacity:.42}
+  .hero-video-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--surface-container)}
+  .hero-video-bg iframe{position:absolute;top:50%;left:50%;width:max(100vw,177.78vh);height:max(56.25vw,100vh);transform:translate(-46%,-48%) scale(1.34);border:0;pointer-events:none;filter:saturate(.58) contrast(1.1) sepia(.18) blur(.15px);opacity:.44}
+  .hero-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(251,249,244,.84) 0%,rgba(251,249,244,.62) 42%,rgba(251,249,244,.4) 100%),radial-gradient(circle at 72% 28%,rgba(251,249,244,.22),rgba(251,249,244,.8) 64%);z-index:1}
+  .hero-video-bg::before{content:'';position:absolute;inset:0;z-index:2;background-image:linear-gradient(to right,rgba(127,117,111,.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(127,117,111,.08) 1px,transparent 1px);background-size:96px 96px;mix-blend-mode:multiply}
+  .video-brand-cover{position:absolute;z-index:3;pointer-events:none;background:linear-gradient(135deg,rgba(251,249,244,.98),rgba(240,238,233,.78));backdrop-filter:blur(18px);border:1px solid rgba(208,196,189,.35);box-shadow:0 18px 50px rgba(42,36,32,.06)}
+  .video-brand-cover.c1{left:0;top:0;width:min(520px,58vw);height:150px}
+  .video-brand-cover.c2{left:0;top:118px;width:min(360px,42vw);height:78px;opacity:.86}
+  .video-brand-cover.c3{left:22%;top:0;width:28vw;height:86px;opacity:.45}
+  .cursor-thread{position:fixed;inset:0;z-index:10001;pointer-events:none;mix-blend-mode:multiply}
+  .cursor-thread svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+  .cursor-thread path{fill:none;stroke-linecap:round;filter:drop-shadow(0 8px 10px rgba(20,15,12,.18))}
+  .cursor-thread .strand-main{stroke:rgba(20,15,12,.72);stroke-width:1.65}
+  .cursor-thread .strand-soft{stroke:rgba(53,72,93,.36);stroke-width:.9}
+  .cursor-thread .strand-highlight{stroke:rgba(255,255,255,.72);stroke-width:.55}
+  .cursor-thread .needle{position:absolute;width:10px;height:38px;border-radius:8px;background:linear-gradient(90deg,#7f756f,#f5f3ee 46%,#2a2420);box-shadow:0 10px 24px rgba(20,15,12,.22);transform-origin:50% 0}
+  .cursor-thread .needle::after{content:'';position:absolute;left:3px;bottom:-7px;width:4px;height:12px;border-radius:50%;background:#2a2420}
+  .thread-sculpture{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden;opacity:.72}
+  .thread-sculpture svg{position:absolute;right:-18%;top:8%;width:min(760px,62vw);height:70vh;overflow:visible;opacity:.58}
+  .thread-sculpture path{fill:none;stroke:rgba(42,36,32,.23);stroke-width:.75;stroke-linecap:round;stroke-dasharray:4 10;filter:drop-shadow(0 8px 18px rgba(42,36,32,.08))}
+  .thread-sculpture .thread-accent{stroke:rgba(53,72,93,.28);stroke-width:1.1;stroke-dasharray:1 13}
+  .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:60;transition:transform .3s ease}
+  .wa-float:hover{transform:scale(1.08)}
+  .hero-text-mask{overflow:hidden;display:inline-block}
+  #hero-title .hero-text-mask > span{transform:translateY(0)!important}
+  #hero-kicker,#hero-desc,#hero-btns,#hero-stat-1,#hero-stat-2{opacity:1!important}
+  .atelier-vector-layer{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+  .vector-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(127,117,111,.28),transparent);transform-origin:center}
+  .vector-line.l1{width:520px;right:5%;top:15%;transform:rotate(24deg)}
+  .vector-line.l2{width:460px;right:12%;top:26%;transform:rotate(-14deg)}
+  .vector-line.l3{width:390px;right:20%;top:55%;transform:rotate(18deg)}
+  .paper-label{position:absolute;z-index:7;border:1px solid rgba(127,117,111,.34);background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(240,238,233,.86));backdrop-filter:blur(14px);box-shadow:0 22px 58px rgba(42,36,32,.12),inset 0 0 0 1px rgba(255,255,255,.55);overflow:hidden}
+  .paper-label::before{content:'';position:absolute;inset:9px;border:1px dashed rgba(127,117,111,.3);pointer-events:none}
+  .paper-label::after{content:'';position:absolute;inset:0;opacity:.16;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E")}
+  .paper-label.neck{right:6%;top:24%;width:390px;height:146px;transform:rotate(-4deg);padding:30px 34px;background:linear-gradient(135deg,rgba(252,248,238,.94),rgba(228,218,196,.88));box-shadow:0 24px 65px rgba(42,36,32,.14),inset 0 0 22px rgba(127,117,111,.16)}
+    .paper-label.barcode{right:12%;bottom:14%;width:315px;height:108px;transform:rotate(4deg);padding:20px 24px;background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(229,226,219,.9));box-shadow:0 20px 54px rgba(42,36,32,.12),inset 0 0 16px rgba(127,117,111,.12)}
+  .paper-kicker{position:relative;z-index:1;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--tailor-blue);margin-bottom:.65rem}
+  .paper-brand{position:relative;z-index:1;font-family:'Playfair Display',serif;font-size:2rem;line-height:1;color:var(--ink);letter-spacing:-.03em}
+  .paper-sub{position:relative;z-index:1;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(77,69,64,.72);margin-top:.75rem}
+  .woven-thread{position:relative;z-index:1;display:grid;gap:5px;margin-top:1rem}
+  .woven-thread span{height:2px;background:linear-gradient(90deg,transparent,rgba(53,72,93,.42),rgba(127,117,111,.5),transparent)}
+  .barcode-bars{position:relative;z-index:1;height:42px;display:flex;gap:4px;align-items:stretch}
+  .barcode-bars span{background:linear-gradient(to bottom,var(--ink),var(--outline-strong));display:block;opacity:.72}
+  .contact-dark{background:#140f0c;color:#fbf9f4}
+  .frosted-panel{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px)}
+  @media(max-width:1024px){
+    .paper-label{opacity:.28}
+    .paper-label.neck{right:-120px;top:22%;scale:.8}
+    .paper-label.tag{display:none}
+    .paper-label.barcode{right:-80px;bottom:18%;scale:.82}
+  }
+  @media(max-width:768px){
+    #hero h1{font-size:4rem!important}
+    .paper-label{opacity:.16}
+    .paper-label.neck{display:block;right:-150px;top:18%;scale:.7}
+    .paper-label.barcode{display:block;right:-120px;bottom:22%;scale:.72}
+  }
+</style>
+</head>
+<body class="selection:bg-primary/10">
+<div class="cursor-dot hidden md:block" id="cursor"></div>
+<div class="cursor-thread hidden md:block" aria-hidden="true">
+  <svg>
+    <path class="strand-soft" id="threadSoft"></path>
+    <path class="strand-main" id="threadMain"></path>
+    <path class="strand-highlight" id="threadHighlight"></path>
+  </svg>
+  <div class="needle" id="threadNeedle"></div>
+</div>
+<nav class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-6 px-6 md:px-16 flex items-center justify-between border-b border-transparent" id="navbar">
+<div class="flex flex-col">
+<span class="font-serif text-xl md:text-2xl tracking-tight leading-none">SHREE KRISHNA LABELS</span>
+<span class="text-[0.6rem] tracking-[0.3em] uppercase opacity-60 mt-1">Labels & Trims Manufacturer</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-xs uppercase tracking-widest hover:opacity-50 transition-opacity" href="#about">Heritage</a>
+<a class="text-xs uppercase tracking-widest hover:opacity-50 transition-opacity" href="#products">Collection</a>
+<a class="text-xs uppercase tracking-widest hover:opacity-50 transition-opacity" href="#industries">Markets</a>
+<a class="text-xs uppercase tracking-widest hover:opacity-50 transition-opacity" href="#contact">Inquiry</a>
+</div>
+<div class="flex items-center gap-6">
+<a class="hidden sm:flex items-center gap-2 text-[0.65rem] uppercase tracking-widest border border-primary/20 px-4 py-2 hover:bg-primary hover:text-white transition-all duration-300" href="https://wa.me/918879552022" target="_blank">
+      WhatsApp
+    </a>
+<button class="bg-primary text-white text-[0.65rem] uppercase tracking-widest px-6 py-2.5" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      Get Quote
+    </button>
+</div>
+</nav>
+<section class="relative min-h-screen flex items-center pt-20 luxury-grid overflow-hidden" id="hero">
+<div class="hero-video-bg" aria-hidden="true">
+  <iframe title="Garment atelier background video" src="https://www.youtube.com/embed/eKGc2w50bmY?autoplay=1&mute=1&controls=0&loop=1&playlist=eKGc2w50bmY&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1" allow="autoplay; encrypted-media; picture-in-picture" loading="eager"></iframe>
+  <div class="video-brand-cover c1"></div>
+  <div class="video-brand-cover c2"></div>
+  <div class="video-brand-cover c3"></div>
+</div>
+<div class="thread-sculpture" aria-hidden="true">
+  <svg viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet">
+    <path class="thread-path" d="M18 170 C180 42 312 332 450 172 S720 42 858 210" />
+    <path class="thread-path thread-accent" d="M56 292 C220 156 330 472 520 260 S720 154 884 332" />
+    <path class="thread-path" d="M2 432 C192 282 350 590 548 382 S752 266 900 486" />
+    <path class="thread-path thread-accent" d="M128 84 C270 208 440 20 590 148 S762 310 870 120" />
+  </svg>
+</div>
+<canvas id="three-canvas"></canvas>
+<div class="atelier-vector-layer" aria-hidden="true">
+  <div class="vector-line l1"></div>
+  <div class="vector-line l2"></div>
+  <div class="vector-line l3"></div>
+  <div class="paper-label neck">
+    <div class="paper-kicker">Woven Neck Label</div>
+    <div class="paper-brand">SHREE KRISHNA LABELS</div>
+    <div class="paper-sub">Garment Labels & Trims</div>
+    <div class="woven-thread"><span></span><span></span><span></span></div>
+  </div>
+  <div class="paper-label barcode">
+    <div class="paper-kicker">Barcode Sticker</div>
+    <div class="barcode-bars"><span style="width:6px"></span><span style="width:14px"></span><span style="width:4px"></span><span style="width:20px"></span><span style="width:7px"></span><span style="width:16px"></span><span style="width:5px"></span><span style="width:24px"></span><span style="width:10px"></span><span style="width:4px"></span><span style="width:18px"></span></div>
+    <div class="paper-sub">Batch 1998 · Mumbai</div>
+  </div>
+</div>
+<div class="container mx-auto px-6 md:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<div class="mb-6 opacity-0" id="hero-kicker">
+<span class="text-[0.65rem] uppercase tracking-[0.4em] text-outline">EST. 1998 • MUMBAI</span>
+</div>
+<h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.03] mb-8" id="hero-title">
+<span class="hero-text-mask"><span class="inline-block translate-y-full">Define the</span></span><br/>
+<span class="hero-text-mask"><span class="inline-block translate-y-full italic opacity-70">Identity</span></span><br/>
+<span class="hero-text-mask"><span class="inline-block translate-y-full">of your Brand.</span></span>
+</h1>
+<p class="text-secondary max-w-md text-lg leading-relaxed mb-10 opacity-0" id="hero-desc">
+        Premium woven labels, tactile hang tags, and bespoke garment trims crafted with 25 years of artisan precision for global fashion houses.
+      </p>
+<div class="flex flex-wrap gap-6 opacity-0" id="hero-btns">
+<button class="bg-primary text-white px-10 py-4 text-xs uppercase tracking-widest hover:bg-on-surface-variant transition-colors" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Request Sample Kit
+        </button>
+<a class="btn-atelier inline-flex items-center text-xs uppercase tracking-widest py-4" href="#products">
+          View Collection
+        </a>
+</div>
+</div>
+<div class="hidden lg:flex flex-col items-end gap-12">
+<div class="text-right opacity-0" id="hero-stat-1">
+<div class="font-serif text-5xl">500+</div>
+<div class="text-[0.6rem] uppercase tracking-widest opacity-60">Global Brands Partnered</div>
+</div>
+<div class="text-right opacity-0" id="hero-stat-2">
+<div class="font-serif text-5xl">40+</div>
+<div class="text-[0.6rem] uppercase tracking-widest opacity-60">Countries Exported</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-16 hidden md:flex items-center gap-4 opacity-40">
+<div class="w-10 h-px bg-primary"></div>
+<span class="text-[0.6rem] uppercase tracking-[0.3em]">Scroll for Heritage</span>
+</div>
+</section>
+<div class="bg-surface-container border-y border-outline/10 py-6 overflow-hidden">
+<div class="marquee-text flex gap-20">
+<div class="flex gap-20 shrink-0 items-center">
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Woven Labels</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Hang Tags</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Barcode Stickers</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Heat Transfer</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">PVC Patches</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Sustainable Trims</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+</div>
+<div class="flex gap-20 shrink-0 items-center">
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Woven Labels</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Hang Tags</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Barcode Stickers</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Heat Transfer</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">PVC Patches</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+<span class="text-[0.65rem] uppercase tracking-[0.5em] font-medium">Sustainable Trims</span>
+<span class="w-1.5 h-1.5 bg-primary/20 rounded-full"></span>
+</div>
+</div>
+</div>
+<section class="py-24 md:py-40 px-6 md:px-16" id="about">
+<div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="aspect-[4/5] bg-surface-container relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBC39xuAXHVR_HTgu9cVK4_EFmqkitU9OlbobWYgcyXo2uDv2qZeIuAYZIb2d58tS6K4aSjAxcKDJdvxwmbRxSNJRz2RvLJC2MIiUVVmGGG_PpoNYuWqRJy8x5cnQbj0rd05IcQyqZEN1Oem2sFiMfI-APwBXMRfal8oEM7XFPz7m2Mx6y0r6J2zqqtUWEfT02Nm6zeA06sELS0ftBMs_UBqnk00SbGSvuyIZ40-f9MbvUEOf4mRRWqKwzCnzlfdpAjNOxlyDqwLQ'); opacity: 0.8;"></div>
+<div class="absolute bottom-0 left-0 bg-white p-8 md:p-12 max-w-[80%]">
+<div class="font-serif text-3xl mb-4">Precision, in every thread.</div>
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50">Annual Production: 50M+ Units</div>
+</div>
+</div>
+<div class="absolute -top-10 -right-10 w-40 h-40 border border-primary/10 hidden md:block"></div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="text-[0.65rem] uppercase tracking-[0.4em] text-outline mb-6">Our Heritage</div>
+<h2 class="font-serif text-4xl md:text-6xl mb-10 leading-tight">Crafting Identity Since 1998.</h2>
+<div class="space-y-6 text-secondary leading-relaxed">
+<p>Shree Krishna Labels has been defining garment identity for over 25 years. From our precision manufacturing facility in Mumbai, we deliver premium branding solutions to fashion houses, export companies, and luxury apparel brands globally.</p>
+<p>Every label we produce carries the DNA of your brand — meticulously crafted using the finest materials and advanced technology that meets international compliance standards.</p>
+</div>
+<div class="grid grid-cols-2 gap-8 mt-12">
+<div>
+<div class="font-serif text-xl mb-2">ISO Certified</div>
+<div class="text-xs text-outline leading-normal">International quality standards across every production process.</div>
+</div>
+<div>
+<div class="font-serif text-xl mb-2">Global Export</div>
+<div class="text-xs text-outline leading-normal">Shipping to 40+ countries with full compliance documentation.</div>
+</div>
+<div>
+<div class="font-serif text-xl mb-2">Rapid Prototyping</div>
+<div class="text-xs text-outline leading-normal">7-day sample turnaround without compromising on precision.</div>
+</div>
+<div>
+<div class="font-serif text-xl mb-2">Sustainable</div>
+<div class="text-xs text-outline leading-normal">Eco-friendly options across our full product range.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container py-24 md:py-40 px-6 md:px-16" id="products">
+<div class="container mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+<div>
+<div class="text-[0.65rem] uppercase tracking-[0.4em] text-outline mb-6">The Collection</div>
+<h2 class="font-serif text-4xl md:text-6xl leading-tight">Complete Branding Solutions.</h2>
+</div>
+<p class="text-secondary max-w-xs text-sm leading-relaxed">
+        Engineered to international standards for luxury, streetwear, and activewear sectors.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline/10">
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">01</div>
+<h3 class="font-serif text-2xl mb-4">Woven Labels</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">High-density woven labels in polyester, cotton &amp; satin. 1200 DPI precision weave.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">02</div>
+<h3 class="font-serif text-2xl mb-4">Hang Tags</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">Premium board, kraft &amp; specialty materials. Custom die-cutting, foiling, and embossing.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">03</div>
+<h3 class="font-serif text-2xl mb-4">Heat Transfer</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">Durable, wash-resistant labels with a no-label-feel. Perfect for sportswear.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">04</div>
+<h3 class="font-serif text-2xl mb-4">PVC Patches</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">3D soft PVC patches for streetwear and outdoor brands. Custom molds available.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">05</div>
+<h3 class="font-serif text-2xl mb-4">Wash Care</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">Multi-language printing for global export. Compliant with international standards.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">06</div>
+<h3 class="font-serif text-2xl mb-4">Barcode Labels</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">GS1-compliant labels. Thermal transfer and digital print options for retail.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">07</div>
+<h3 class="font-serif text-2xl mb-4">Satin Labels</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">Ultra-soft finish for luxury lingerie and high-end fashion boutiques.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+<div class="product-card p-10 flex flex-col h-full bg-white">
+<div class="text-[0.6rem] opacity-30 mb-8 tracking-widest">08</div>
+<h3 class="font-serif text-2xl mb-4">Custom Trims</h3>
+<p class="text-xs text-secondary leading-relaxed mb-10 flex-grow">Rubber patches, embroidered badges, and bespoke branded packaging.</p>
+<button class="text-[0.6rem] uppercase tracking-[0.2em] font-medium border-b border-primary w-fit pb-1 hover:opacity-50 transition-opacity">Explore Detail</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-40 px-6 md:px-16 bg-white luxury-grid" id="industries">
+<div class="container mx-auto">
+<div class="text-center mb-20">
+<div class="text-[0.65rem] uppercase tracking-[0.4em] text-outline mb-6">Expertise</div>
+<h2 class="font-serif text-4xl md:text-6xl mb-6">Industries We Empower.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="group border-l border-outline/10 pl-8 py-4 hover:border-primary transition-colors">
+<h4 class="font-serif text-2xl mb-4">Fashion &amp; Apparel</h4>
+<p class="text-sm text-secondary leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">Premium branding for luxury fashion houses and contemporary global labels.</p>
+</div>
+<div class="group border-l border-outline/10 pl-8 py-4 hover:border-primary transition-colors">
+<h4 class="font-serif text-2xl mb-4">Performance Wear</h4>
+<p class="text-sm text-secondary leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">Engineered heat transfers and durable wash care for activewear brands.</p>
+</div>
+<div class="group border-l border-outline/10 pl-8 py-4 hover:border-primary transition-colors">
+<h4 class="font-serif text-2xl mb-4">Export Houses</h4>
+<p class="text-sm text-secondary leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">Compliant solutions for export garment manufacturers serving EU &amp; US markets.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="contact-dark py-24 md:py-40 px-6 md:px-16 relative overflow-hidden" id="contact">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<div class="w-full h-full luxury-grid" style="background-image: linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 60px 60px;"></div>
+</div>
+<div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
+<div>
+<div class="text-[0.65rem] uppercase tracking-[0.4em] text-surface-container mb-6">Inquiry</div>
+<h2 class="font-serif text-4xl md:text-7xl mb-12 leading-tight">Elevate Your<br/>Brand's Canvas.</h2>
+<div class="space-y-10">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 border border-white/20 flex items-center justify-center shrink-0">📍</div>
+<div>
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50 mb-1">Our Workshop</div>
+<div class="text-sm font-light">123 Industrial Estate, Andheri East, Mumbai, 400069</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 border border-white/20 flex items-center justify-center shrink-0">✉</div>
+<div>
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50 mb-1">Mail Us</div>
+<div class="text-sm font-light">info@shreekrishnalabels.com</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 border border-white/20 flex items-center justify-center shrink-0">📞</div>
+<div>
+<div class="text-[0.6rem] uppercase tracking-widest opacity-50 mb-1">Direct Line</div>
+<div class="text-sm font-light">+91 88795 52022</div>
+</div>
+</div>
+</div>
+</div>
+<div class="frosted-panel p-8 md:p-12">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[0.6rem] uppercase tracking-[0.2em] opacity-60">Full Name</label>
+<input class="w-full bg-white/10 border-b border-white/20 focus:border-white transition-colors outline-none py-2 px-0 text-white font-light" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6rem] uppercase tracking-[0.2em] opacity-60">Company Name</label>
+<input class="w-full bg-white/10 border-b border-white/20 focus:border-white transition-colors outline-none py-2 px-0 text-white font-light" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6rem] uppercase tracking-[0.2em] opacity-60">Email Address</label>
+<input class="w-full bg-white/10 border-b border-white/20 focus:border-white transition-colors outline-none py-2 px-0 text-white font-light" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6rem] uppercase tracking-[0.2em] opacity-60">Product Interest</label>
+<select class="w-full bg-transparent border-b border-white/20 focus:border-white transition-colors outline-none py-2 px-0 text-white font-light appearance-none">
+<option class="bg-primary" value="">Select Product</option>
+<option class="bg-primary" value="woven">Woven Labels</option>
+<option class="bg-primary" value="hang">Hang Tags</option>
+<option class="bg-primary" value="heat">Heat Transfer</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6rem] uppercase tracking-[0.2em] opacity-60">Message</label>
+<textarea class="w-full bg-white/10 border-b border-white/20 focus:border-white transition-colors outline-none py-2 px-0 text-white font-light min-h-[100px] resize-none"></textarea>
+</div>
+<button class="w-full py-4 bg-white text-primary text-xs uppercase tracking-widest font-semibold hover:bg-surface-container transition-colors" onclick="alert('Thank you! Our concierge team will reach out shortly.')" type="button">
+          Send Inquiry
+        </button>
+</form>
+</div>
+</div>
+</section>
+<footer class="py-16 md:py-24 px-6 md:px-16 border-t border-outline/10">
+<div class="container mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-20">
+<div class="col-span-1 md:col-span-1">
+<div class="font-serif text-2xl mb-6">SHREE KRISHNA LABELS</div>
+<p class="text-xs text-secondary leading-relaxed opacity-60 max-w-xs">
+          Premium garment branding and accessories manufacturer serving the world's most discerning fashion brands since 1998.
+        </p>
+</div>
+<div>
+<div class="text-[0.6rem] uppercase tracking-[0.3em] font-bold mb-6">Explore</div>
+<div class="flex flex-col gap-4 text-xs font-light opacity-70">
+<a class="hover:opacity-100 transition-opacity" href="#about">Our Heritage</a>
+<a class="hover:opacity-100 transition-opacity" href="#products">The Collection</a>
+<a class="hover:opacity-100 transition-opacity" href="#industries">Expertise</a>
+<a class="hover:opacity-100 transition-opacity" href="#contact">Request Kit</a>
+</div>
+</div>
+<div>
+<div class="text-[0.6rem] uppercase tracking-[0.3em] font-bold mb-6">Collection</div>
+<div class="flex flex-col gap-4 text-xs font-light opacity-70">
+<a class="hover:opacity-100 transition-opacity" href="#">Woven Labels</a>
+<a class="hover:opacity-100 transition-opacity" href="#">Hang Tags</a>
+<a class="hover:opacity-100 transition-opacity" href="#">Leather Patches</a>
+<a class="hover:opacity-100 transition-opacity" href="#">Eco-Friendly</a>
+</div>
+</div>
+<div>
+<div class="text-[0.6rem] uppercase tracking-[0.3em] font-bold mb-6">Workshop</div>
+<div class="text-xs font-light opacity-70 leading-loose">
+          Mumbai, Maharashtra<br/>
+          India, 400069<br/>
+<a class="block mt-4" href="tel:+918879552022">+91 88795 52022</a>
+<a class="block" href="mailto:info@shreekrishnalabels.com">info@shreekrishnalabels.com</a>
+</div>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-outline/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-[0.6rem] opacity-40 uppercase tracking-widest">© 2025 Shree Krishna Labels. All Rights Reserved.</div>
+<div class="flex gap-8 text-[0.6rem] opacity-40 uppercase tracking-widest">
+<a href="#">Privacy Policy</a>
+<a href="#">Sustainability Report</a>
+</div>
+</div>
+</div>
+</footer>
+<div class="wa-float">
+<a class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl" href="https://wa.me/918879552022" target="_blank">
+<svg fill="white" height="30" viewbox="0 0 24 24" width="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</a>
+</div>
+<script>
+  // Cursor with hanging 3D thread
+  const cursor = document.getElementById('cursor');
+  const threadMain = document.getElementById('threadMain');
+  const threadSoft = document.getElementById('threadSoft');
+  const threadHighlight = document.getElementById('threadHighlight');
+  const threadNeedle = document.getElementById('threadNeedle');
+  let pointerX = window.innerWidth * 0.5;
+  let pointerY = window.innerHeight * 0.45;
+  let followX = pointerX;
+  let followY = pointerY + 95;
+  let sway = 0;
+  function drawCursorThread(){
+    followX += (pointerX - followX) * 0.16;
+    followY += (pointerY + 96 - followY) * 0.12;
+    sway += 0.08;
+    const dx = pointerX - followX;
+    const tilt = Math.max(-22, Math.min(22, dx * 0.18 + Math.sin(sway) * 4));
+    const c1x = pointerX + Math.sin(sway) * 20;
+    const c1y = pointerY + 44;
+    const c2x = followX - dx * 0.16;
+    const c2y = followY - 34;
+    const d = `M ${pointerX} ${pointerY} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${followX} ${followY}`;
+    if(threadMain){
+      threadMain.setAttribute('d', d);
+      threadSoft.setAttribute('d', `M ${pointerX+4} ${pointerY+2} C ${c1x+14} ${c1y+8}, ${c2x-10} ${c2y+4}, ${followX+5} ${followY}`);
+      threadHighlight.setAttribute('d', `M ${pointerX-2} ${pointerY+1} C ${c1x-8} ${c1y+2}, ${c2x+8} ${c2y-2}, ${followX-3} ${followY}`);
+      threadNeedle.style.left = (followX - 5) + 'px';
+      threadNeedle.style.top = (followY - 2) + 'px';
+      threadNeedle.style.transform = `rotate(${tilt}deg) rotateX(18deg)`;
+    }
+    requestAnimationFrame(drawCursorThread);
+  }
+  drawCursorThread();
+  document.addEventListener('mousemove', (e) => {
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('nav-blur', 'py-4', 'border-outline/5');
+      nav.classList.remove('py-6', 'border-transparent');
+    } else {
+      nav.classList.remove('nav-blur', 'py-4', 'border-outline/5');
+      nav.classList.add('py-6', 'border-transparent');
+    }
+  });
+
+  // GSAP Animations
+  window.addEventListener('load', () => {
+    const tl = gsap.timeline();
+    
+    tl.to('#hero-title span span', {
+      y: 0,
+      duration: 1.2,
+      stagger: 0.2,
+      ease: 'power4.out'
+    })
+    .to(['#hero-kicker', '#hero-desc', '#hero-btns'], {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: 'power3.out'
+    }, '-=0.8')
+    .to(['#hero-stat-1', '#hero-stat-2'], {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    }, '-=1');
+
+    gsap.to('.thread-sculpture svg', {
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2
+      },
+      rotate: 14,
+      xPercent: -16,
+      yPercent: 18,
+      scale: 1.18,
+      ease: 'none'
+    });
+
+    gsap.to('.thread-path', {
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      },
+      strokeDashoffset: -160,
+      opacity: 0.95,
+      ease: 'none'
+    });
+
+    gsap.to('.paper-label.neck', {
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      },
+      rotate: 7,
+      y: 80,
+      x: -90,
+      ease: 'none'
+    });
+
+    gsap.to('.paper-label.barcode', {
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      },
+      rotate: -9,
+      y: -96,
+      x: -130,
+      ease: 'none'
+    });
+
+    // Scroll Triggered reveals
+    document.querySelectorAll('.product-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: 'power2.out'
+      });
+    });
+  });
+
+  // Three.js Scene
+  (function initThree() {
+    const canvas = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 8);
+
+    // Atelier palette based materials
+    const warmMat = new THREE.MeshPhysicalMaterial({
+      color: 0xe4e2dd,
+      roughness: 0.8,
+      metalness: 0.1,
+      transparent: true,
+      opacity: 0.9
+    });
+    
+    const darkMat = new THREE.MeshPhysicalMaterial({
+      color: 0x2a2420,
+      roughness: 0.5,
+      metalness: 0.2,
+      transparent: true,
+      opacity: 0.85
+    });
+
+    // Create high-fidelity label geometries
+    const group = new THREE.Group();
+    scene.add(group);
+
+    // Central "Atelier" Floating Label
+    const mainLabelGeo = new THREE.BoxGeometry(2.4, 1.2, 0.05);
+    const mainLabel = new THREE.Mesh(mainLabelGeo, warmMat);
+    mainLabel.position.set(1.5, 0.5, 0);
+    mainLabel.rotation.set(0.2, -0.4, 0.1);
+    group.add(mainLabel);
+    mainLabel.visible = false;
+
+    // Decorative floating threads / lines
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x7f756f, opacity: 0.2, transparent: true });
+    for (let i = 0; i < 5; i++) {
+      const points = [];
+      points.push(new THREE.Vector3(-2, 2, -2));
+      points.push(new THREE.Vector3(4, -2, 2));
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geometry, lineMat);
+      line.position.set(Math.random() * 2, Math.random() * 2, -1);
+      group.add(line);
+    }
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffffff, 1);
+    pointLight.position.set(5, 5, 5);
+    scene.add(pointLight);
+
+    const threadGroup = new THREE.Group();
+    group.add(threadGroup);
+    const threadMat = new THREE.LineBasicMaterial({ color: 0x35485d, transparent: true, opacity: 0.12 });
+    for (let i = 0; i < 9; i++) {
+      const curve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0.1, 1.35 - i * 0.26, -0.7 + i * 0.08),
+        new THREE.Vector3(1.45, -0.15 + Math.sin(i) * 0.3, 0.55),
+        new THREE.Vector3(2.35, 0.72 - i * 0.14, -0.2),
+        new THREE.Vector3(4.2, -1.1 + i * 0.2, 0.7)
+      ]);
+      const threadGeo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(90));
+      const thread = new THREE.Line(threadGeo, threadMat);
+      thread.rotation.z = -0.08 + i * 0.018;
+      threadGroup.add(thread);
+    }
+
+    let scrollProgress = 0;
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.to({p:0}, {
+        p:1,
+        scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true},
+        onUpdate:function(){ scrollProgress = this.targets()[0].p; }
+      });
+    }
+
+    // Animation & Mouse Interaction
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) - 0.5;
+      mouseY = (e.clientY / window.innerHeight) - 0.5;
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      group.rotation.y += (mouseX * 0.2 + scrollProgress * 0.55 - group.rotation.y) * 0.05;
+      group.rotation.x += (mouseY * 0.2 - scrollProgress * 0.22 - group.rotation.x) * 0.05;
+      group.position.x = scrollProgress * -0.75;
+      threadGroup.scale.setScalar(1 + scrollProgress * 0.28);
+      threadGroup.children.forEach((thread, i) => {
+        thread.rotation.z = -0.08 + i * 0.018 + scrollProgress * (0.32 + i * 0.012);
+        thread.position.y = Math.sin(Date.now() * 0.001 + i) * 0.025 + scrollProgress * (i - 4) * 0.045;
+      });
+      
+      mainLabel.position.y = 0.5 + Math.sin(Date.now() * 0.001) * 0.1;
+
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    animate();
+  })();
+</script>
+</body></html>
