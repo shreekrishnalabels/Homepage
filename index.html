@@ -71,8 +71,16 @@ nav.scrolled { background: rgba(250,248,243,.92); backdrop-filter: blur(20px); b
 .nav-wordmark {
   display: flex; align-items: baseline; gap: .7rem;
 }
-.nav-wordmark-main { font-family: var(--ff-display); font-size: .95rem; font-weight: 500; letter-spacing: .04em; }
+.nav-wordmark-main { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 500; letter-spacing: .06em; }
 .nav-wordmark-meta { font-family: var(--ff-mono); font-size: .48rem; letter-spacing: .25em; color: var(--ink-muted); text-transform: uppercase; }
+.nav-logo-wrap {
+  display: flex; align-items: center;
+  background: url('SKLTEXTURE.jpeg') center/cover;
+  border-radius: 4px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.nav-logo { height: 54px; width: auto; object-fit: contain; display: block; mix-blend-mode: multiply; }
 
 .nav-links { display: flex; align-items: center; gap: 2.5rem; }
 .nav-links a { font-family: var(--ff-mono); font-size: .5rem; letter-spacing: .28em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color .25s; }
@@ -515,8 +523,8 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
 .nav-ham.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
 .nav-ham.open span:nth-child(2){opacity:0;}
 .nav-ham.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
-.mobile-menu { display:none;position:fixed;top:64px;left:0;right:0;z-index:199;background:rgba(250,248,243,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);flex-direction:column;padding:1.5rem 2rem;gap:0; }
-.mobile-menu.open { display:flex; }
+.mobile-menu { display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;z-index:199;background:rgba(250,248,243,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);gap:0;max-height:0;overflow:hidden;padding:0 2rem;transition:max-height .42s cubic-bezier(.23,1,.32,1),padding .42s; }
+.mobile-menu.open { max-height:520px;padding:1.5rem 2rem; }
 .mobile-menu a { font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;padding:.9rem 0;border-bottom:1px solid var(--rule);transition:color .25s; }
 .mobile-menu a:hover { color:var(--ink); }
 .mobile-menu a:last-child { border-bottom:none; }
@@ -636,6 +644,50 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
   .hero-stat-num { font-size:1.5rem; }
 }
 
+/* ════ ENHANCEMENTS ════ */
+
+/* Restore cursor on touch devices */
+@media (hover:none) {
+  body { cursor:auto; }
+  #cur-dot, #cur-ring { display:none; }
+  .pcard-od, .ind-card, .wa-float, .cf-submit, .nav-ham { cursor:pointer; }
+}
+
+/* Page loader */
+#page-loader { position:fixed;inset:0;z-index:99999;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.8rem;transition:opacity .7s .4s,visibility .7s .4s; }
+#page-loader.hide { opacity:0;visibility:hidden;pointer-events:none; }
+.loader-wordmark { font-family:var(--ff-display);font-size:1.3rem;font-weight:300;color:var(--ink);letter-spacing:.12em; }
+.loader-sub { font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(15,13,10,.35); }
+.loader-bar-track { width:110px;height:1px;background:rgba(201,169,110,.25); }
+.loader-bar-fill { height:1px;background:var(--gold);width:0;animation:loaderFill 1.3s cubic-bezier(.23,1,.32,1) .15s forwards; }
+@keyframes loaderFill { to { width:110px; } }
+
+/* Active nav link */
+.nav-links a.nav-active { color:var(--ink); }
+.nav-links a.nav-active::after { content:'';display:block;height:1px;background:var(--gold);margin-top:3px;transform-origin:left;animation:navActiveLine .3s ease forwards; }
+@keyframes navActiveLine { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+
+/* Form validation states */
+.cf-field { transition:border-color .25s; }
+.cf-field.valid { border-bottom-color:rgba(76,175,80,.45); }
+.cf-field.error { border-bottom-color:rgba(229,57,53,.55); }
+.cf-error-msg { display:none;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.18em;color:rgba(229,57,53,.75);margin-top:.3rem; }
+.cf-field.error .cf-error-msg { display:block; }
+
+/* Focus accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:1px solid var(--gold);outline-offset:3px; }
+
+/* Smooth back-to-top scroll for all anchor links */
+html { scroll-behavior:smooth; }
+
+/* Better card transitions */
+.pcard-od { will-change:background; }
+.ind-card { will-change:background; }
+
+/* Improved button press feel */
+.btn-solid:active, .cf-submit:active, .wa-btn:active { transform:scale(.98); }
+.btn-solid, .cf-submit, .wa-btn { transition:all .3s cubic-bezier(.23,1,.32,1); }
+
 /* Clothing mockup section */
 #clothing-mockup { background: var(--ink); }
 .mockup-grid { display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.07); }
@@ -690,6 +742,13 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
 </head>
 <body>
 
+<!-- Page Loader -->
+<div id="page-loader" aria-hidden="true">
+  <img src="MAINLOGO.png" alt="Shree Krishna Labels" style="height:140px;width:auto;object-fit:contain;margin-bottom:.5rem;"/>
+  <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+  <div class="loader-sub">Est. 1998 · Vasai, Mumbai</div>
+</div>
+
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 
@@ -709,7 +768,6 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
 <nav id="navbar">
   <div class="nav-wordmark">
     <span class="nav-wordmark-main">SHREE KRISHNA LABELS</span>
-    <span class="nav-wordmark-meta">Est. 1998 · Vasai, Mumbai</span>
   </div>
   <div class="nav-links">
     <a href="#about">Heritage</a>
@@ -1023,8 +1081,8 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
 </section>
 
 
-<!-- III. LABELS ON CLOTHING MOCKUP -->
-<section id="clothing-mockup" class="od-section">
+<!-- CLOTHING MOCKUP SECTION REMOVED -->
+<section id="clothing-mockup" class="od-section" style="display:none;">
   <div class="s-header-bar" style="background:rgba(15,13,10,.8);border-color:rgba(255,255,255,.07);">
     <span class="s-roman" style="color:rgba(201,169,110,.5);">III. Labels in Action · Clothing Mockups</span>
     <span class="s-filed" style="color:rgba(240,230,200,.3);">Filed under <strong style="color:rgba(240,230,200,.5);">Shirt · T-Shirt · Jeans · Jacket</strong></span>
@@ -1698,7 +1756,7 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
           <div class="cf-field"><label class="cf-label">Email Address</label><input class="cf-input" type="email" placeholder="your@email.com" name="email" required/></div>
           <div class="cf-field">
             <label class="cf-label">Product Interest</label>
-            <select class="cf-select">
+            <select class="cf-select" name="product">
               <option value="">Select product category</option>
               <option>Woven Labels</option>
               <option>Leather Patches</option>
@@ -1712,9 +1770,10 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
               <option>Custom Trims</option>
             </select>
           </div>
-          <div class="cf-field"><label class="cf-label">Message</label><textarea class="cf-textarea" rows="4" placeholder="Brief us on your requirements, quantities, and delivery timeline..."></textarea></div>
+          <div class="cf-field"><label class="cf-label">Message</label><textarea class="cf-textarea" rows="4" placeholder="Brief us on your requirements, quantities, and delivery timeline..." name="message"></textarea></div>
           <button class="cf-submit" type="submit">Send Inquiry →</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -1777,6 +1836,12 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
 </a>
 
 <script>
+// ── Page Loader ──────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  const loader = document.getElementById('page-loader');
+  if (loader) setTimeout(() => loader.classList.add('hide'), 1500);
+});
+
 // ── Cursor ──────────────────────────────────────────────────────────
 const dot = document.getElementById('cur-dot');
 const ring = document.getElementById('cur-ring');
@@ -1884,6 +1949,61 @@ window.addEventListener('load', () => {
   });
 });
 
+// ── Mobile Menu ──────────────────────────────────────────────────────
+function toggleMobile() {
+  const ham = document.getElementById('navHam');
+  const menu = document.querySelector('.mobile-menu');
+  const isOpen = ham.classList.toggle('open');
+  menu.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navHam').classList.remove('open');
+    document.querySelector('.mobile-menu').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ── Active Nav Link ──────────────────────────────────────────────────
+(function() {
+  const links = document.querySelectorAll('.nav-links a[href^="#"]');
+  const secs  = document.querySelectorAll('section[id]');
+  function update() {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+    links.forEach(a => a.classList.toggle('nav-active', a.getAttribute('href') === '#' + cur));
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+// ── Counter Animation ────────────────────────────────────────────────
+(function() {
+  const els = document.querySelectorAll('.hero-stat-num, .sh-stat-num, .stat-num, .astat-num');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const raw = el.innerHTML;
+      const m = raw.match(/^(\d+)/);
+      if (!m) return;
+      const target = parseInt(m[1]), rest = raw.slice(m[0].length);
+      let t0 = null;
+      const tick = ts => {
+        if (!t0) t0 = ts;
+        const p = Math.min((ts - t0) / 1800, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.innerHTML = Math.floor(ease * target) + rest;
+        p < 1 ? requestAnimationFrame(tick) : (el.innerHTML = raw);
+      };
+      requestAnimationFrame(tick);
+      obs.unobserve(el);
+    });
+  }, { threshold: .5 });
+  els.forEach(el => obs.observe(el));
+})();
+
 // ── Audio ─────────────────────────────────────────────────────────────
 let audioPlaying = false;
 const aud = document.getElementById('ambient-audio');
@@ -1896,16 +2016,73 @@ function toggleAudio() {
 }
 
 // ── Form ──────────────────────────────────────────────────────────────
-function handleSubmit(btn) {
+function validateForm(form) {
+  let ok = true;
+  form.querySelectorAll('.cf-field').forEach(field => field.classList.remove('error','valid'));
+  form.querySelectorAll('[required]').forEach(input => {
+    const field = input.closest('.cf-field');
+    if (!input.value.trim()) { field && field.classList.add('error'); ok = false; }
+    else { field && field.classList.add('valid'); }
+  });
+  const email = form.querySelector('[type="email"]');
+  if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    email.closest('.cf-field') && email.closest('.cf-field').classList.replace('valid','error');
+    ok = false;
+  }
+  return ok;
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  if (!validateForm(e.target)) return;
+  const btn = e.target.querySelector('.cf-submit');
   btn.textContent = 'Sending...';
   btn.style.opacity = '.7';
-  setTimeout(() => {
-    btn.textContent = '✓ Inquiry Received — We\'ll reach out shortly';
-    btn.style.background = 'rgba(201,169,110,.15)';
-    btn.style.color = 'var(--gold)';
-    btn.style.opacity = '1';
-  }, 1100);
+  btn.disabled = true;
+  fetch(e.target.action, {
+    method: 'POST',
+    body: new FormData(e.target),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(r => {
+    if (r.ok) {
+      btn.textContent = '✓ Inquiry Received — We\'ll reach out shortly';
+      btn.style.background = 'rgba(201,169,110,.15)';
+      btn.style.color = 'var(--gold)';
+      btn.style.opacity = '1';
+      e.target.reset();
+      e.target.querySelectorAll('.cf-field').forEach(f => f.classList.remove('valid','error'));
+    } else {
+      btn.textContent = 'Error — Please try again';
+      btn.style.opacity = '1'; btn.disabled = false;
+    }
+  })
+  .catch(() => {
+    btn.textContent = 'Error — Please try again';
+    btn.style.opacity = '1'; btn.disabled = false;
+  });
 }
+
+// Real-time field validation
+document.querySelectorAll('.cf-input, .cf-textarea, .cf-select').forEach(input => {
+  input.addEventListener('blur', () => {
+    const field = input.closest('.cf-field');
+    if (!field) return;
+    const empty = !input.value.trim();
+    const badEmail = input.type === 'email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+    if ((input.required && empty) || badEmail) {
+      field.classList.add('error'); field.classList.remove('valid');
+    } else if (!empty) {
+      field.classList.remove('error'); field.classList.add('valid');
+    }
+  });
+  input.addEventListener('input', () => {
+    const field = input.closest('.cf-field');
+    if (field && field.classList.contains('error') && input.value.trim()) {
+      field.classList.remove('error'); field.classList.add('valid');
+    }
+  });
+});
 
 // ── Responsive contact fix ────────────────────────────────────────────
 function fixContact() {
