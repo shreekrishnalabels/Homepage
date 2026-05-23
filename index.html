@@ -965,58 +965,89 @@ html { scroll-behavior:smooth; }
     </div>
   </div>
   <div class="product-grid-od">
-    <div class="pcard-od reveal" style="cursor:pointer;" onclick="openKahwaPopup()">
+
+    <div class="pcard-od reveal" style="cursor:pointer;"
+      data-num="01" data-tag="Woven" data-icon="✦" data-img="KAHWA CO.png"
+      data-title="Woven Labels"
+      data-desc="High-density woven labels in polyester, cotton &amp; satin. 1200 DPI precision weave for photorealistic branding."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 01</span><span class="pcard-tag">Woven</span></div>
       <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
-        <img src="KAHWA CO.png" alt="Kahwa Co Woven Label" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;"/>
-        <div style="position:absolute;bottom:.7rem;right:.7rem;font-family:var(--ff-mono);font-size:.35rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(15,13,10,.55);padding:.3rem .6rem;backdrop-filter:blur(4px);pointer-events:none;">Click to view 3D</div>
+        <img src="KAHWA CO.png" alt="Woven Labels" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Woven Labels</h3>
-      <p class="pcard-p">High-density woven labels in polyester, cotton & satin. 1200 DPI precision weave for photorealistic branding.</p>
+      <p class="pcard-p">High-density woven labels in polyester, cotton &amp; satin. 1200 DPI precision weave for photorealistic branding.</p>
       <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal reveal-delay-1">
+
+    <div class="pcard-od reveal reveal-delay-1" style="cursor:pointer;"
+      data-num="02" data-tag="Paper" data-icon="◇"
+      data-title="Hang Tags"
+      data-desc="Premium board, kraft &amp; specialty materials. Custom die-cutting, gold foiling, and embossing for luxury brands."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 02</span><span class="pcard-tag">Paper</span></div>
       <div class="pcard-visual">
         <div class="mini-hangtag"><div class="mini-hangtag-brand">SKL</div><div class="mini-hangtag-line"></div><div class="mini-hangtag-num">HANG TAG</div></div>
       </div>
       <h3 class="pcard-h3">Hang Tags</h3>
-      <p class="pcard-p">Premium board, kraft & specialty materials. Custom die-cutting, gold foiling, and embossing for luxury brands.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <p class="pcard-p">Premium board, kraft &amp; specialty materials. Custom die-cutting, gold foiling, and embossing for luxury brands.</p>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal reveal-delay-2">
+
+    <div class="pcard-od reveal reveal-delay-2" style="cursor:pointer;"
+      data-num="03" data-tag="Transfer" data-icon="◈"
+      data-title="Heat Transfer"
+      data-desc="Durable, wash-resistant no-label-feel transfers. Perfect for sportswear, activewear, and performance brands."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 03</span><span class="pcard-tag">Transfer</span></div>
       <div class="pcard-visual">
         <div class="mini-heat"><div class="mini-heat-text">HEAT</div></div>
       </div>
       <h3 class="pcard-h3">Heat Transfer</h3>
       <p class="pcard-p">Durable, wash-resistant no-label-feel transfers. Perfect for sportswear, activewear, and performance brands.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal reveal-delay-3">
-      <div class="pcard-meta"><span class="pcard-num">Nº 04</span><span class="pcard-tag">Ethnic</span></div>
+
+    <div class="pcard-od reveal reveal-delay-3" style="cursor:pointer;"
+      data-num="04" data-tag="Foil" data-icon="◉" data-img="malak.png"
+      data-title="Premium Embossed Foil Label"
+      data-desc="Gold &amp; silver foil embossed labels with raised texture for luxury garments, haute couture, and premium fashion houses."
+      onclick="openProductPopup(this)">
+      <div class="pcard-meta"><span class="pcard-num">Nº 04</span><span class="pcard-tag">Foil</span></div>
       <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
-        <img src="Product Odhna.jpeg" alt="Odhna & Ethnic Wear Labels" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="malak.png" alt="Premium Embossed Foil Label" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
-      <h3 class="pcard-h3">Odhna & Ethnic Wear</h3>
-      <p class="pcard-p">Custom woven & printed labels for traditional ethnic garments — dupattas, sarees, lehengas, and luxury Indian couture.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <h3 class="pcard-h3">Premium Embossed Foil Label</h3>
+      <p class="pcard-p">Gold &amp; silver foil embossed labels with raised texture for luxury garments, haute couture, and premium fashion houses.</p>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal">
+
+    <div class="pcard-od reveal" style="cursor:pointer;"
+      data-num="05" data-tag="Compliance" data-icon="◉"
+      data-title="Wash Care Labels"
+      data-desc="Multi-language printing for global export. Fully compliant with EU, US, and international standards."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 05</span><span class="pcard-tag">Compliance</span></div>
       <div class="pcard-visual">
         <div class="mini-washcare"><div>🌡</div><div>🔄</div><div>❌</div><div>🧺</div><div>♻️</div></div>
       </div>
       <h3 class="pcard-h3">Wash Care Labels</h3>
       <p class="pcard-p">Multi-language printing for global export. Fully compliant with EU, US, and international standards.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal reveal-delay-1">
+
+    <div class="pcard-od reveal reveal-delay-1" style="cursor:pointer;"
+      data-num="06" data-tag="Barcode" data-icon="▤"
+      data-title="Barcode Labels"
+      data-desc="GS1-compliant labels. Thermal transfer and digital print options for premium retail and global export."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 06</span><span class="pcard-tag">Barcode</span></div>
       <div class="pcard-visual">
         <div class="mini-barcode">
@@ -1026,29 +1057,40 @@ html { scroll-behavior:smooth; }
       </div>
       <h3 class="pcard-h3">Barcode Labels</h3>
       <p class="pcard-p">GS1-compliant labels. Thermal transfer and digital print options for premium retail and global export.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal reveal-delay-2">
+
+    <div class="pcard-od reveal reveal-delay-2" style="cursor:pointer;"
+      data-num="07" data-tag="Satin" data-icon="✦"
+      data-title="Satin Labels"
+      data-desc="Ultra-soft finish for luxury lingerie, silk garments, and high-end fashion boutiques worldwide."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 07</span><span class="pcard-tag">Satin</span></div>
       <div class="pcard-visual">
         <div class="mini-satin"><div class="mini-satin-text">SATIN</div></div>
       </div>
       <h3 class="pcard-h3">Satin Labels</h3>
       <p class="pcard-p">Ultra-soft finish for luxury lingerie, silk garments, and high-end fashion boutiques worldwide.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
-    <div class="pcard-od reveal reveal-delay-3">
+
+    <div class="pcard-od reveal reveal-delay-3" style="cursor:pointer;"
+      data-num="08" data-tag="Custom" data-icon="◬"
+      data-title="Embroidered Badges"
+      data-desc="Circular, shield &amp; custom-shape embroidered patches. School badges, brand patches &amp; institutional emblems with multicolor thread work."
+      onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 08</span><span class="pcard-tag">Custom</span></div>
       <div class="pcard-visual">
         <div class="mini-patch">CUSTOM<br/>TRIMS</div>
       </div>
       <h3 class="pcard-h3">Embroidered Badges</h3>
       <p class="pcard-p">Circular, shield &amp; custom-shape embroidered patches. School badges, brand patches &amp; institutional emblems with multicolor thread work.</p>
-      <a class="pcard-link" href="#contact">Inquire →</a>
+      <a class="pcard-link" href="#contact" onclick="event.stopPropagation()">Inquire →</a>
       <div class="pcard-gold-bar"></div>
     </div>
+
   </div>
 </section>
 
@@ -1523,11 +1565,11 @@ html { scroll-behavior:smooth; }
     </div>
     <div class="ind-grid">
       <div class="ind-card reveal" style="padding:0;overflow:hidden;">
-        <div style="width:100%;height:200px;overflow:hidden;position:relative;">
-          <img src="malak.png" alt="Fashion & Luxury Apparel" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .6s ease;"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,13,10,.2) 0%,rgba(15,13,10,.75) 100%);"></div>
+        <div style="width:100%;height:190px;overflow:hidden;position:relative;">
+          <img src="Product Odhna.jpeg" alt="Fashion & Luxury Apparel" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,13,10,.15) 0%,rgba(15,13,10,.7) 100%);"></div>
         </div>
-        <div style="padding:2rem 2.5rem;">
+        <div style="padding:2rem 2.5rem 3rem;">
           <div class="ind-card-num">01</div>
           <div class="ind-h4">Fashion & Luxury Apparel</div>
           <div class="ind-p">Premium branding solutions for haute couture, designer labels, and contemporary global fashion houses demanding impeccable quality.</div>
@@ -2102,33 +2144,182 @@ function fixContact() {
 fixContact();
 window.addEventListener('resize', fixContact);
 
-// ── Kahwa 3D Popup ────────────────────────────────────────────────────
-function openKahwaPopup() {
-  const p = document.getElementById('kahwaPopup');
-  p.style.display = 'flex';
+// ── Unified Product 3D Popup ──────────────────────────────────────────
+function openProductPopup(card) {
+  const popup    = document.getElementById('productPopup');
+  const imgWrap  = document.getElementById('ppImgWrap');
+  const textCard = document.getElementById('ppTextCard');
+  const img      = card.dataset.img;
+  const title    = card.dataset.title;
+  const desc     = card.dataset.desc;
+  const num      = card.dataset.num;
+  const tag      = card.dataset.tag;
+  const icon     = card.dataset.icon || '✦';
+
+  document.getElementById('ppFootNum').textContent   = 'Nº ' + num;
+  document.getElementById('ppFootTitle').textContent = title;
+
+  if (img) {
+    imgWrap.style.display  = 'flex';
+    textCard.style.display = 'none';
+    const ppImg = document.getElementById('ppImg');
+    ppImg.src = img;
+    ppImg.alt = title;
+  } else {
+    imgWrap.style.display  = 'none';
+    textCard.style.display = 'flex';
+    /* force re-trigger animation */
+    textCard.style.animation = 'none';
+    textCard.offsetHeight;
+    textCard.style.animation = '';
+    document.getElementById('ppTcNum').textContent   = 'Nº ' + num + ' ——— ' + tag;
+    document.getElementById('ppTcIcon').textContent  = icon;
+    document.getElementById('ppTcTitle').textContent = title;
+    document.getElementById('ppTcDesc').textContent  = desc;
+  }
+
+  popup.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
-function closeKahwaPopup() {
-  const p = document.getElementById('kahwaPopup');
-  p.style.display = 'none';
+function closeProductPopup() {
+  document.getElementById('productPopup').style.display = 'none';
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeKahwaPopup(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductPopup(); });
 </script>
 
-<!-- ════════ KAHWA 3D POPUP ════════ -->
-<div id="kahwaPopup" style="position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;background:rgba(10,8,6,.88);backdrop-filter:blur(14px);" onclick="closeKahwaPopup()">
-  <div style="position:relative;perspective:900px;" onclick="event.stopPropagation()">
-    <img src="KAHWA CO.png" alt="Kahwa Co Woven Label" style="width:340px;max-width:88vw;height:auto;display:block;box-shadow:0 30px 80px rgba(0,0,0,.65),0 0 0 1px rgba(201,169,110,.2);animation:kahwa3dSpin 5s linear infinite;transform-style:preserve-3d;"/>
-    <button onclick="closeKahwaPopup()" style="position:absolute;top:-1rem;right:-1rem;width:2rem;height:2rem;background:var(--gold);border:none;cursor:pointer;font-size:.9rem;color:var(--ink);font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1;">✕</button>
-    <div style="text-align:center;margin-top:1.2rem;font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.55);">Kahwa Co · Woven Label · Click outside to close</div>
+<!-- ════════ PRODUCT 3D POPUP ════════ -->
+<div id="productPopup" onclick="closeProductPopup()" style="position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(10,8,6,.92);backdrop-filter:blur(18px);">
+  <div class="pp-modal" onclick="event.stopPropagation()">
+    <button class="pp-close" onclick="closeProductPopup()">✕</button>
+
+    <!-- Image version: spins 3D -->
+    <div id="ppImgWrap" class="pp-img-wrap" style="display:none;">
+      <img id="ppImg" src="" alt=""/>
+    </div>
+
+    <!-- No-image luxury card version -->
+    <div id="ppTextCard" class="pp-text-card" style="display:none;">
+      <div class="pp-tc-num" id="ppTcNum"></div>
+      <div class="pp-tc-icon" id="ppTcIcon"></div>
+      <div class="pp-tc-title" id="ppTcTitle"></div>
+      <div class="pp-tc-rule"></div>
+      <div class="pp-tc-desc" id="ppTcDesc"></div>
+      <a href="#contact" class="pp-tc-btn" onclick="closeProductPopup()">Request Sample →</a>
+    </div>
+
+    <div class="pp-footer">
+      <span class="pp-footer-num" id="ppFootNum"></span>
+      <span class="pp-footer-title" id="ppFootTitle"></span>
+      <a href="#contact" class="pp-footer-btn" onclick="closeProductPopup()">Inquire →</a>
+    </div>
   </div>
 </div>
 
 <style>
-@keyframes kahwa3dSpin {
-  0%   { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+/* ── Product Popup ── */
+.pp-modal {
+  position: relative;
+  width: min(500px, 94vw);
+  background: var(--ink);
+  border: 1px solid rgba(201,169,110,.2);
+  box-shadow: 0 40px 120px rgba(0,0,0,.85);
+  overflow: hidden;
+}
+.pp-close {
+  position: absolute; top: .8rem; right: .8rem; z-index: 10;
+  width: 2rem; height: 2rem;
+  background: var(--gold); border: none; cursor: pointer;
+  font-size: .85rem; font-weight: 700; color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.pp-img-wrap {
+  display: flex; align-items: center; justify-content: center;
+  padding: 3rem 2rem 1.5rem;
+  background: linear-gradient(160deg, rgba(201,169,110,.05) 0%, rgba(15,13,10,0) 60%);
+}
+.pp-img-wrap img {
+  width: 100%; max-width: 360px; height: auto; display: block;
+  box-shadow: 0 24px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(201,169,110,.15);
+  animation: productSpin 6s linear infinite;
+}
+.pp-text-card {
+  padding: 3.5rem 2.5rem 2rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  animation: ppSlideIn .45s cubic-bezier(.23,1,.32,1) forwards;
+}
+.pp-tc-num {
+  font-family: var(--ff-mono); font-size: .42rem; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(201,169,110,.4); margin-bottom: 1.8rem;
+}
+.pp-tc-icon {
+  font-size: 2.6rem; color: rgba(201,169,110,.3); margin-bottom: 1.2rem;
+  animation: ppFloat 3s ease-in-out infinite;
+}
+.pp-tc-title {
+  font-family: var(--ff-display); font-size: 2rem; font-weight: 300;
+  color: var(--cream-light); line-height: 1.15; margin-bottom: 1.5rem;
+}
+.pp-tc-rule {
+  width: 36px; height: 1px; background: var(--gold); margin: 0 auto 1.5rem;
+}
+.pp-tc-desc {
+  font-size: .72rem; font-weight: 300; line-height: 1.85;
+  color: rgba(240,230,200,.48); margin-bottom: 2rem; max-width: 320px;
+}
+.pp-tc-btn {
+  display: inline-block;
+  font-family: var(--ff-mono); font-size: .42rem; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--gold); text-decoration: none;
+  padding: .75rem 2rem; border: 1px solid rgba(201,169,110,.3);
+  transition: background .3s, border-color .3s;
+}
+.pp-tc-btn:hover { background: rgba(201,169,110,.08); border-color: rgba(201,169,110,.6); }
+.pp-footer {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(201,169,110,.1);
+}
+.pp-footer-num {
+  font-family: var(--ff-mono); font-size: .4rem; letter-spacing: .25em;
+  color: rgba(201,169,110,.35); white-space: nowrap;
+}
+.pp-footer-title {
+  font-family: var(--ff-display); font-size: .95rem; font-weight: 400;
+  color: rgba(240,230,200,.55); flex: 1; min-width: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pp-footer-btn {
+  font-family: var(--ff-mono); font-size: .4rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--gold); text-decoration: none;
+  white-space: nowrap; transition: opacity .2s;
+}
+.pp-footer-btn:hover { opacity: .7; }
+.pcard-click-hint {
+  position: absolute; bottom: .6rem; right: .6rem;
+  font-family: var(--ff-mono); font-size: .33rem; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(255,255,255,.7);
+  background: rgba(15,13,10,.6); padding: .28rem .55rem;
+  backdrop-filter: blur(4px); pointer-events: none;
+}
+@keyframes productSpin {
+  0%   { transform: perspective(900px) rotateY(0deg); }
+  100% { transform: perspective(900px) rotateY(360deg); }
+}
+@keyframes ppSlideIn {
+  from { opacity: 0; transform: scale(.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes ppFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@media (max-width: 480px) {
+  .pp-tc-title { font-size: 1.55rem; }
+  .pp-img-wrap { padding: 2rem 1rem 1rem; }
+  .pp-text-card { padding: 2.5rem 1.5rem 1.5rem; }
+  .pp-footer { flex-wrap: wrap; }
+  .pp-footer-title { flex: 1 0 100%; order: -1; text-align: center; }
 }
 </style>
 </body>
