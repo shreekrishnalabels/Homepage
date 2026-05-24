@@ -1916,7 +1916,12 @@ html { scroll-behavior:smooth; }
         </div>
       </div>
       <div class="contact-right reveal reveal-delay-1">
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" name="access_key" value="3bc6fa8d-a333-494e-9d1d-db06a17cb648"/>
+        <input type="hidden" name="subject" value="New Sample Kit Request — Shree Krishna Labels"/>
+        <input type="hidden" name="from_name" value="SKL Website Inquiry"/>
+        <input type="hidden" name="redirect" value="false"/>
+        <input type="checkbox" name="botcheck" style="display:none;"/>
         <div class="contact-form-box">
           <div class="cf-title">Request a Sample Kit</div>
           <div class="cf-grid">
@@ -2226,6 +2231,9 @@ function validateForm(form) {
   return ok;
 }
 
+// ── Google Sheets Script URL (paste your Apps Script URL here after setup) ──
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxMmENAcYNzNaOQ9Q1YQE_gITX087HUM3zjZRJqLTmVTXs2kIJeMnQJHu-m5fuXZCdj/exec';
+
 function handleFormSubmit(e) {
   e.preventDefault();
   if (!validateForm(e.target)) return;
@@ -2233,12 +2241,36 @@ function handleFormSubmit(e) {
   btn.textContent = 'Sending...';
   btn.style.opacity = '.7';
   btn.disabled = true;
-  fetch(e.target.action, {
+
+  const formData = new FormData(e.target);
+
+  // 1. Send to Web3Forms (email notification)
+  const web3Promise = fetch(e.target.action, {
     method: 'POST',
-    body: new FormData(e.target),
+    body: formData,
     headers: { 'Accept': 'application/json' }
-  })
-  .then(r => {
+  });
+
+  // 2. Send to Google Sheets (unlimited storage)
+  const sheetData = {
+    name: formData.get('name'),
+    company: formData.get('company'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    product: formData.get('product'),
+    message: formData.get('message'),
+    timestamp: new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
+  };
+  const sheetPromise = GOOGLE_SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL'
+    ? fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        body: JSON.stringify(sheetData),
+        headers: { 'Content-Type': 'application/json' }
+      })
+    : Promise.resolve({ ok: true });
+
+  Promise.all([web3Promise, sheetPromise])
+  .then(([r]) => {
     if (r.ok) {
       btn.textContent = '✓ Inquiry Received — We\'ll reach out shortly';
       btn.style.background = 'rgba(201,169,110,.15)';
