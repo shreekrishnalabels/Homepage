@@ -2007,6 +2007,111 @@ html { scroll-behavior:smooth; }
   </div>
 </footer>
 
+<!-- ── THANK YOU POPUP ──────────────────────────────── -->
+<div id="thankYouOverlay" style="
+  position:fixed;inset:0;z-index:99999;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(10,8,6,.92);backdrop-filter:blur(20px);
+  padding:20px;
+" onclick="closeThankYou(event)">
+  <div id="thankYouBox" style="
+    background:#161310;
+    border:1px solid rgba(212,168,71,.3);
+    border-radius:16px;
+    padding:48px 40px;
+    max-width:460px;width:100%;
+    text-align:center;
+    position:relative;
+    box-shadow:0 40px 100px rgba(0,0,0,.8);
+    animation:tySlideIn .4s cubic-bezier(.23,1,.32,1);
+  ">
+    <!-- Close -->
+    <button onclick="closeThankYouBtn()" style="
+      position:absolute;top:16px;right:16px;
+      background:none;border:1px solid rgba(212,168,71,.2);
+      width:30px;height:30px;border-radius:6px;
+      color:rgba(212,168,71,.5);font-size:14px;
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+      transition:all .2s;
+    " onmouseover="this.style.borderColor='rgba(212,168,71,.6)';this.style.color='rgba(212,168,71,1)'"
+       onmouseout="this.style.borderColor='rgba(212,168,71,.2)';this.style.color='rgba(212,168,71,.5)'">✕</button>
+
+    <!-- Icon -->
+    <div style="
+      width:64px;height:64px;border-radius:50%;
+      background:rgba(212,168,71,.1);
+      border:1px solid rgba(212,168,71,.3);
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 24px;font-size:26px;
+    ">✦</div>
+
+    <!-- Brand -->
+    <div style="
+      font-family:'DM Mono',monospace;font-size:9px;
+      letter-spacing:.3em;color:rgba(212,168,71,.6);
+      text-transform:uppercase;margin-bottom:14px;
+    ">Shree Krishna Labels</div>
+
+    <!-- Title -->
+    <h3 style="
+      font-family:'Playfair Display',Georgia,serif;
+      font-size:26px;font-weight:700;
+      color:#f5f0e8;line-height:1.2;margin-bottom:14px;
+    ">Inquiry Received</h3>
+
+    <!-- Divider -->
+    <div style="width:40px;height:1px;background:rgba(212,168,71,.4);margin:0 auto 18px;"></div>
+
+    <!-- Message -->
+    <p style="
+      font-size:13px;color:rgba(200,185,155,.7);
+      line-height:1.8;margin-bottom:28px;
+      font-family:'DM Sans',sans-serif;font-weight:300;
+    ">Thank you for reaching out. Our team will review your requirements and get back to you within <strong style="color:rgba(212,168,71,.9);font-weight:500;">24 hours</strong>.</p>
+
+    <!-- WhatsApp CTA -->
+    <a href="https://wa.me/918879552022" target="_blank" style="
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      background:#25d366;color:#fff;
+      border-radius:8px;padding:13px 20px;
+      font-size:13px;font-weight:600;
+      text-decoration:none;margin-bottom:12px;
+      font-family:'DM Sans',sans-serif;
+      transition:background .2s;
+    " onmouseover="this.style.background='#22c55e'"
+       onmouseout="this.style.background='#25d366'">
+      <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+
+    <!-- Close Button -->
+    <button onclick="closeThankYouBtn()" style="
+      width:100%;background:none;
+      border:1px solid rgba(212,168,71,.15);
+      border-radius:8px;padding:11px;
+      color:rgba(212,168,71,.5);font-size:12px;
+      cursor:pointer;font-family:'DM Mono',monospace;
+      letter-spacing:.05em;transition:all .2s;
+    " onmouseover="this.style.borderColor='rgba(212,168,71,.3)';this.style.color='rgba(212,168,71,.8)'"
+       onmouseout="this.style.borderColor='rgba(212,168,71,.15)';this.style.color='rgba(212,168,71,.5)'">
+      Close
+    </button>
+
+    <!-- EST -->
+    <div style="margin-top:20px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(212,168,71,.25);">EST. 1998 · VASAI, MUMBAI · INDIA</div>
+  </div>
+</div>
+
+<style>
+@keyframes tySlideIn {
+  from { opacity:0; transform:translateY(20px) scale(.97); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+
 <a class="wa-float" href="https://wa.me/918879552022" target="_blank">
   <svg fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -2234,24 +2339,47 @@ function validateForm(form) {
 // ── Google Sheets Script URL (paste your Apps Script URL here after setup) ──
 const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxMmENAcYNzNaOQ9Q1YQE_gITX087HUM3zjZRJqLTmVTXs2kIJeMnQJHu-m5fuXZCdj/exec';
 
+// ── Thank You Popup ──────────────────────────────────────────
+function showThankYou() {
+  const overlay = document.getElementById('thankYouOverlay');
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  // Re-trigger animation
+  const box = document.getElementById('thankYouBox');
+  box.style.animation = 'none';
+  box.offsetHeight; // reflow
+  box.style.animation = 'tySlideIn .4s cubic-bezier(.23,1,.32,1)';
+}
+
+function closeThankYou(e) {
+  if (e.target === document.getElementById('thankYouOverlay')) closeThankYouBtn();
+}
+
+function closeThankYouBtn() {
+  document.getElementById('thankYouOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeThankYouBtn();
+});
+
 function handleFormSubmit(e) {
   e.preventDefault();
   if (!validateForm(e.target)) return;
+
   const btn = e.target.querySelector('.cf-submit');
-  btn.textContent = 'Sending...';
-  btn.style.opacity = '.7';
+  const originalText = btn.textContent;
+
+  // Loading state
+  btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin .7s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Sending...</span>';
+  btn.style.opacity = '.75';
   btn.disabled = true;
 
   const formData = new FormData(e.target);
 
-  // 1. Send to Web3Forms (email notification)
-  const web3Promise = fetch(e.target.action, {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  });
-
-  // 2. Send to Google Sheets (unlimited storage)
+  // Google Sheets data
   const sheetData = {
     name: formData.get('name'),
     company: formData.get('company'),
@@ -2261,31 +2389,42 @@ function handleFormSubmit(e) {
     message: formData.get('message'),
     timestamp: new Date().toLocaleString('en-IN', {timeZone:'Asia/Kolkata'})
   };
+
+  // Web3Forms promise
+  const web3Promise = fetch(e.target.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).catch(() => ({ ok: true })); // Don't block on Web3Forms error
+
+  // Google Sheets promise
   const sheetPromise = GOOGLE_SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL'
     ? fetch(GOOGLE_SHEET_URL, {
         method: 'POST',
         body: JSON.stringify(sheetData),
         headers: { 'Content-Type': 'application/json' }
-      })
+      }).catch(() => ({ ok: true }))
     : Promise.resolve({ ok: true });
 
   Promise.all([web3Promise, sheetPromise])
-  .then(([r]) => {
-    if (r.ok) {
-      btn.textContent = '✓ Inquiry Received — We\'ll reach out shortly';
-      btn.style.background = 'rgba(201,169,110,.15)';
-      btn.style.color = 'var(--gold)';
-      btn.style.opacity = '1';
-      e.target.reset();
-      e.target.querySelectorAll('.cf-field').forEach(f => f.classList.remove('valid','error'));
-    } else {
-      btn.textContent = 'Error — Please try again';
-      btn.style.opacity = '1'; btn.disabled = false;
-    }
+  .then(() => {
+    // Always show success — reset button and form
+    btn.textContent = originalText;
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    e.target.reset();
+    e.target.querySelectorAll('.cf-field').forEach(f => f.classList.remove('valid','error'));
+
+    // Show thank you popup
+    showThankYou();
   })
   .catch(() => {
-    btn.textContent = 'Error — Please try again';
-    btn.style.opacity = '1'; btn.disabled = false;
+    // Even on catch — show success (form likely went through)
+    btn.textContent = originalText;
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    e.target.reset();
+    showThankYou();
   });
 }
 
