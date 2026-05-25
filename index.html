@@ -557,6 +557,18 @@ nav.scrolled { background: rgba(250,248,243,.92); backdrop-filter: blur(20px); b
 .ind-gold-bar { position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .6s cubic-bezier(.23,1,.32,1); }
 .ind-card:hover .ind-gold-bar { width: 100%; }
 
+/* ── Industries: Grayscale → Color on hover ── */
+.ind-card div[style*="height:190px"] { overflow: hidden; }
+.ind-card img {
+  filter: grayscale(100%) brightness(.75) contrast(1.05);
+  transition: filter .65s cubic-bezier(.23,1,.32,1), transform .7s cubic-bezier(.23,1,.32,1);
+  will-change: filter, transform;
+}
+.ind-card:hover img {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.07);
+}
+
 /* ── PROCESS ── */
 #process { background: var(--ivory); }
 
@@ -2535,7 +2547,6 @@ function openProductPopup(card) {
   } else {
     imgWrap.style.display  = 'none';
     textCard.style.display = 'flex';
-    /* force re-trigger animation */
     textCard.style.animation = 'none';
     textCard.offsetHeight;
     textCard.style.animation = '';
@@ -2547,25 +2558,40 @@ function openProductPopup(card) {
 
   popup.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+
+  // ── Cursor fix: hide custom gold dots, show native arrow ──
+  const dot  = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  if (dot)  dot.style.opacity  = '0';
+  if (ring) ring.style.opacity = '0';
+  document.documentElement.style.cursor = 'default';
 }
+
 function closeProductPopup() {
   document.getElementById('productPopup').style.display = 'none';
   document.body.style.overflow = '';
+
+  // ── Restore custom cursor ──
+  const dot  = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  if (dot)  dot.style.opacity  = '1';
+  if (ring) ring.style.opacity = '1';
+  document.documentElement.style.cursor = 'none';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductPopup(); });
 </script>
 
 <!-- ════════ PRODUCT 3D POPUP ════════ -->
-<div id="productPopup" onclick="closeProductPopup()" style="position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(10,8,6,.92);backdrop-filter:blur(18px);cursor:default;">
-  <div class="pp-modal" onclick="event.stopPropagation()">
+<div id="productPopup" onclick="closeProductPopup()" style="position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(40px) saturate(1.8);-webkit-backdrop-filter:blur(40px) saturate(1.8);cursor:default;">
+  <div class="pp-modal" onclick="event.stopPropagation()" style="cursor:default;">
     <button class="pp-close" onclick="closeProductPopup()">✕</button>
 
-    <!-- Image version: spins 3D -->
+    <!-- Image version -->
     <div id="ppImgWrap" class="pp-img-wrap" style="display:none;">
       <img id="ppImg" src="" alt=""/>
     </div>
 
-    <!-- No-image luxury card version -->
+    <!-- Premium text card version -->
     <div id="ppTextCard" class="pp-text-card" style="display:none;">
       <div class="pp-tc-num" id="ppTcNum"></div>
       <div class="pp-tc-icon" id="ppTcIcon"></div>
@@ -2584,85 +2610,132 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProduct
 </div>
 
 <style>
-/* ── Product Popup ── */
+/* ── Product Popup — Apple Premium Style ── */
 .pp-modal {
   position: relative;
-  width: min(500px, 94vw);
-  background: var(--ink);
-  border: 1px solid rgba(201,169,110,.2);
-  box-shadow: 0 40px 120px rgba(0,0,0,.85);
+  width: min(480px, 94vw);
+  /* Apple-style glassmorphism */
+  background: rgba(22, 18, 12, 0.72);
+  backdrop-filter: blur(48px) saturate(2);
+  -webkit-backdrop-filter: blur(48px) saturate(2);
+  border: 1px solid rgba(255,255,255,.10);
+  border-bottom-color: rgba(255,255,255,.05);
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,.08),
+    0 48px 100px rgba(0,0,0,.7),
+    0 8px 32px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.08);
   overflow: hidden;
   cursor: default;
+  animation: ppModalIn .38s cubic-bezier(.23,1,.32,1);
 }
+@keyframes ppModalIn {
+  from { opacity:0; transform: scale(.94) translateY(20px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+
+/* ── Close button — Apple pill style ── */
 .pp-close {
-  position: absolute; top: .8rem; right: .8rem; z-index: 10;
-  width: 2rem; height: 2rem;
-  background: var(--gold); border: none; cursor: pointer;
-  font-size: .85rem; font-weight: 700; color: var(--ink);
+  position: absolute; top: 14px; right: 14px; z-index: 10;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.15);
+  cursor: pointer;
+  font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.7);
   display: flex; align-items: center; justify-content: center;
+  transition: background .2s, color .2s;
+  backdrop-filter: blur(8px);
 }
+.pp-close:hover {
+  background: rgba(255,255,255,.22);
+  color: #fff;
+}
+
+/* ── Image wrap ── */
 .pp-img-wrap {
   display: flex; align-items: center; justify-content: center;
-  padding: 3rem 2rem 1.5rem;
-  background: linear-gradient(160deg, rgba(201,169,110,.05) 0%, rgba(15,13,10,0) 60%);
+  padding: 3rem 2.5rem 1.5rem;
+  background: linear-gradient(160deg, rgba(201,169,110,.06) 0%, transparent 70%);
 }
 .pp-img-wrap img {
-  width: 100%; max-width: 360px; height: auto; display: block;
-  box-shadow: 0 24px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(201,169,110,.15);
-  animation: productSpin 6s linear infinite;
+  width: 100%; max-width: 340px; height: auto; display: block;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(201,169,110,.12);
+  animation: ppFloat 4s ease-in-out infinite;
 }
+
+/* ── Text card ── */
 .pp-text-card {
-  padding: 3.5rem 2.5rem 2rem;
+  padding: 3.2rem 2.8rem 2rem;
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  animation: ppSlideIn .45s cubic-bezier(.23,1,.32,1) forwards;
 }
 .pp-tc-num {
-  font-family: var(--ff-mono); font-size: .42rem; letter-spacing: .3em;
-  text-transform: uppercase; color: rgba(201,169,110,.4); margin-bottom: 1.8rem;
+  font-family: var(--ff-mono); font-size: .38rem; letter-spacing: .35em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, rgba(201,169,110,.6), rgba(201,169,110,.3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
 }
 .pp-tc-icon {
-  font-size: 2.6rem; color: rgba(201,169,110,.3); margin-bottom: 1.2rem;
-  animation: ppFloat 3s ease-in-out infinite;
+  font-size: 2.8rem; margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 16px rgba(201,169,110,.25));
+  animation: ppFloat 3.5s ease-in-out infinite;
 }
 .pp-tc-title {
-  font-family: var(--ff-display); font-size: 2rem; font-weight: 300;
-  color: var(--cream-light); line-height: 1.15; margin-bottom: 1.5rem;
+  font-family: var(--ff-display); font-size: 1.9rem; font-weight: 300;
+  color: rgba(245, 238, 220, .95); line-height: 1.2; margin-bottom: 1.2rem;
+  letter-spacing: -.01em;
 }
 .pp-tc-rule {
-  width: 36px; height: 1px; background: var(--gold); margin: 0 auto 1.5rem;
+  width: 32px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,.6), transparent);
+  margin: 0 auto 1.4rem;
 }
 .pp-tc-desc {
-  font-size: .72rem; font-weight: 300; line-height: 1.85;
-  color: rgba(240,230,200,.48); margin-bottom: 2rem; max-width: 320px;
+  font-size: .7rem; font-weight: 300; line-height: 1.9;
+  color: rgba(220,210,185,.45); margin-bottom: 2rem; max-width: 300px;
 }
 .pp-tc-btn {
-  display: inline-block;
-  font-family: var(--ff-mono); font-size: .42rem; letter-spacing: .28em;
-  text-transform: uppercase; color: var(--gold); text-decoration: none;
-  padding: .75rem 2rem; border: 1px solid rgba(201,169,110,.3);
-  transition: background .3s, border-color .3s;
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--ff-mono); font-size: .4rem; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(201,169,110,.9); text-decoration: none;
+  padding: .8rem 2rem;
+  background: rgba(201,169,110,.08);
+  border: 1px solid rgba(201,169,110,.2);
+  border-radius: 30px;
+  transition: background .3s, border-color .3s, color .3s;
+  backdrop-filter: blur(8px);
 }
-.pp-tc-btn:hover { background: rgba(201,169,110,.08); border-color: rgba(201,169,110,.6); }
+.pp-tc-btn:hover {
+  background: rgba(201,169,110,.16);
+  border-color: rgba(201,169,110,.45);
+  color: rgba(201,169,110,1);
+}
+
+/* ── Footer ── */
 .pp-footer {
   display: flex; align-items: center; gap: 1rem;
-  padding: 1rem 1.5rem;
-  border-top: 1px solid rgba(201,169,110,.1);
+  padding: .9rem 1.6rem;
+  border-top: 1px solid rgba(255,255,255,.07);
+  background: rgba(0,0,0,.15);
 }
 .pp-footer-num {
-  font-family: var(--ff-mono); font-size: .4rem; letter-spacing: .25em;
-  color: rgba(201,169,110,.35); white-space: nowrap;
+  font-family: var(--ff-mono); font-size: .38rem; letter-spacing: .22em;
+  color: rgba(201,169,110,.3); white-space: nowrap;
 }
 .pp-footer-title {
-  font-family: var(--ff-display); font-size: .95rem; font-weight: 400;
-  color: rgba(240,230,200,.55); flex: 1; min-width: 0;
+  font-family: var(--ff-display); font-size: .9rem; font-weight: 400;
+  color: rgba(240,230,200,.5); flex: 1; min-width: 0;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .pp-footer-btn {
-  font-family: var(--ff-mono); font-size: .4rem; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--gold); text-decoration: none;
-  white-space: nowrap; transition: opacity .2s;
+  font-family: var(--ff-mono); font-size: .38rem; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(201,169,110,.8); text-decoration: none;
+  white-space: nowrap; transition: color .2s;
 }
-.pp-footer-btn:hover { opacity: .7; }
+.pp-footer-btn:hover { color: var(--gold); }
+
 .pcard-click-hint {
   position: absolute; bottom: .6rem; right: .6rem;
   font-family: var(--ff-mono); font-size: .33rem; letter-spacing: .18em;
@@ -2670,19 +2743,22 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProduct
   background: rgba(15,13,10,.6); padding: .28rem .55rem;
   backdrop-filter: blur(4px); pointer-events: none;
 }
-@keyframes productSpin {
-  0%   { transform: perspective(900px) rotateY(0deg); }
-  100% { transform: perspective(900px) rotateY(360deg); }
+
+@keyframes ppFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 @keyframes ppSlideIn {
   from { opacity: 0; transform: scale(.92) translateY(16px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-@keyframes ppFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-7px); }
+@keyframes productSpin {
+  0%   { transform: perspective(900px) rotateY(0deg); }
+  100% { transform: perspective(900px) rotateY(360deg); }
 }
+
 @media (max-width: 480px) {
+  .pp-modal { border-radius: 16px; }
   .pp-tc-title { font-size: 1.55rem; }
   .pp-img-wrap { padding: 2rem 1rem 1rem; }
   .pp-text-card { padding: 2.5rem 1.5rem 1.5rem; }
