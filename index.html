@@ -561,9 +561,13 @@ nav.scrolled { background: rgba(250,248,243,.92); backdrop-filter: blur(20px); b
 #process { background: var(--ivory); }
 
 .process-grid { display: grid; grid-template-columns: repeat(5,1fr); border-top: 1px solid var(--rule); }
-.ps-card { border-right: 1px solid var(--rule); padding: 2.5rem 2rem; position: relative; overflow: hidden; }
+.ps-card { border-right: 1px solid var(--rule); padding: 0 0 2.5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; }
 .ps-card:last-child { border-right: none; }
-.ps-num { font-family: var(--ff-display); font-size: 3.5rem; font-weight: 300; color: rgba(201,169,110,.12); line-height: 1; margin-bottom: 1.5rem; }
+.ps-img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 1.8rem; position: relative; background: #e8e0d0; }
+.ps-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform .7s cubic-bezier(.23,1,.32,1); }
+.ps-card:hover .ps-img-wrap img { transform: scale(1.04); }
+.ps-content { padding: 0 2rem; flex: 1; }
+.ps-num { font-family: var(--ff-display); font-size: 3.5rem; font-weight: 300; color: rgba(201,169,110,.5); line-height: 1; margin-bottom: .6rem; }
 .ps-h4 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: .55rem; }
 .ps-p { font-size: .66rem; font-weight: 300; line-height: 1.75; color: var(--ink-muted); }
 .ps-bar { position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width .7s cubic-bezier(.23,1,.32,1); }
@@ -685,6 +689,7 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
   .ind-card:nth-child(2n) { border-right:none; }
   .ind-card:nth-child(3n) { border-right:1px solid rgba(255,255,255,.07); }
   .process-grid { grid-template-columns:repeat(3,1fr); }
+  .ps-img-wrap { aspect-ratio: 4/3; }
   .ps-card:nth-child(3n) { border-right:none; }
   .contact-grid { grid-template-columns:1fr; }
   .contact-left { border-right:none;border-bottom:1px solid rgba(255,255,255,.07); }
@@ -753,6 +758,7 @@ footer { background: #080604; color: var(--cream-light); border-top: 1px solid r
   .ind-grid { grid-template-columns:1fr; }
   .ind-card { border-right:none; }
   .process-grid { grid-template-columns:1fr 1fr; }
+  .ps-content { padding: 0 1.2rem; }
   .ps-card:nth-child(2n) { border-right:none; }
   .ps-card:last-child { grid-column:1/-1; }
   .ps-card { padding:1.8rem 1.2rem; }
@@ -1787,33 +1793,58 @@ html { scroll-behavior:smooth; }
     </div>
     <div class="process-grid">
       <div class="ps-card reveal">
-        <div class="ps-num">01</div>
-        <div class="ps-h4">Brief & Design</div>
-        <div class="ps-p">Share your artwork, Pantone colors, and specifications. Our design team creates production-ready files within 48 hours.</div>
+        <div class="ps-img-wrap">
+          <img src="img1.png" alt="Brief and design process at Shree Krishna Labels – custom woven label design consultation Mumbai" loading="lazy"/>
+        </div>
+        <div class="ps-content">
+          <div class="ps-num">01</div>
+          <div class="ps-h4">Brief & Design</div>
+          <div class="ps-p">Share your vision. We create moodboards, sketches & digital mockups tailored perfectly to your brand.</div>
+        </div>
         <div class="ps-bar"></div>
       </div>
       <div class="ps-card reveal reveal-delay-1">
-        <div class="ps-num">02</div>
-        <div class="ps-h4">Sampling</div>
-        <div class="ps-p">Physical samples dispatched within 7 working days. Multiple revisions included until you approve perfection.</div>
+        <div class="ps-img-wrap">
+          <img src="img2.png" alt="Sampling process for custom garment labels – fabric swatches and hang tag samples Shree Krishna Labels" loading="lazy"/>
+        </div>
+        <div class="ps-content">
+          <div class="ps-num">02</div>
+          <div class="ps-h4">Sampling</div>
+          <div class="ps-p">Printed samples, reference shots & prototypes help you approve material, finishes & layout with ease.</div>
+        </div>
         <div class="ps-bar"></div>
       </div>
       <div class="ps-card reveal reveal-delay-2">
-        <div class="ps-num">03</div>
-        <div class="ps-h4">Production</div>
-        <div class="ps-p">ISO-certified manufacturing with quality checks at every stage. Real-time production updates keep you informed.</div>
+        <div class="ps-img-wrap">
+          <img src="img3.png" alt="Woven label production process – ISO certified manufacturing facility Vasai Mumbai India" loading="lazy"/>
+        </div>
+        <div class="ps-content">
+          <div class="ps-num">03</div>
+          <div class="ps-h4">Production</div>
+          <div class="ps-p">Once confirmed, we follow a strict quality process at every stage to ensure consistent results.</div>
+        </div>
         <div class="ps-bar"></div>
       </div>
       <div class="ps-card reveal reveal-delay-3">
-        <div class="ps-num">04</div>
-        <div class="ps-h4">QC & Packaging</div>
-        <div class="ps-p">Multi-layer quality control before export packaging. Compliance documentation prepared for your destination market.</div>
+        <div class="ps-img-wrap">
+          <img src="img4.png" alt="Quality control and premium packaging of garment labels – Shree Krishna Labels QC process" loading="lazy"/>
+        </div>
+        <div class="ps-content">
+          <div class="ps-num">04</div>
+          <div class="ps-h4">QC & Packaging</div>
+          <div class="ps-p">Each item is checked for perfection and carefully packed to reflect the premium experience.</div>
+        </div>
         <div class="ps-bar"></div>
       </div>
       <div class="ps-card reveal reveal-delay-4">
-        <div class="ps-num">05</div>
-        <div class="ps-h4">Global Delivery</div>
-        <div class="ps-p">Fast delivery from Vasai, Mumbai across India. Export worldwide with full tracking and compliance documentation.</div>
+        <div class="ps-img-wrap">
+          <img src="img5.png" alt="Global delivery of woven labels and garment trims – worldwide export from Mumbai India" loading="lazy"/>
+        </div>
+        <div class="ps-content">
+          <div class="ps-num">05</div>
+          <div class="ps-h4">Global Delivery</div>
+          <div class="ps-p">Fast turnaround with secure, trackable delivery anywhere in India and globally to your destination.</div>
+        </div>
         <div class="ps-bar"></div>
       </div>
     </div>
@@ -1845,8 +1876,7 @@ html { scroll-behavior:smooth; }
           </div>
         </div>
         <div style="padding:1.8rem 2.8rem 2.8rem;">
-           <div class="founder-name" style="font-size:1.3rem;margin-bottom:.4rem;">Mr. Narbadeshwar Chaubey</div>
-          <div class="founder-role">Founder & Director</div>
+          <div class="founder-role">Mr. Narbadeshwar Chaubey</div>
           <div class="founder-bio">Started Shree Krishna Labels in 1998 with a single loom and a dream to serve Mumbai's garment industry. Built trust with 500+ brands over 25 years through quality and on-time delivery. Every label that leaves our factory carries this founding promise.</div>
           <div class="founder-since">Est. 1998 · Vasai, Mumbai</div>
         </div>
