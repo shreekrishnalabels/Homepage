@@ -1,69 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Homepage -->
+  <!-- Homepage — Priority 1.0 -->
   <url>
     <loc>https://shreekrishnalabels.in/</loc>
-    <lastmod>2025-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Future Product Pages — create these HTML files -->
+  <!-- Product Pages — Priority 0.9 -->
   <url>
     <loc>https://shreekrishnalabels.in/woven-labels</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://shreekrishnalabels.in/hang-tags</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://shreekrishnalabels.in/heat-transfer-labels</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://shreekrishnalabels.in/pvc-patches</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://shreekrishnalabels.in/wash-care-labels</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://shreekrishnalabels.in/barcode-labels</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://shreekrishnalabels.in/satin-labels</loc>
-    <lastmod>2025-05-24</lastmod>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shreekrishnalabels.in/leather-patches</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shreekrishnalabels.in/embroidered-patches</loc>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog / Content Pages — Priority 0.7 -->
   <url>
-    <loc>https://shreekrishnalabels.in/embroidered-patches</loc>
-    <lastmod>2025-05-24</lastmod>
+    <loc>https://shreekrishnalabels.in/blog/woven-labels-vs-printed-labels</loc>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shreekrishnalabels.in/blog/how-to-choose-woven-labels</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shreekrishnalabels.in/blog/wash-care-label-eu-compliance</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shreekrishnalabels.in/blog/pvc-patches-vs-leather-patches</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
