@@ -448,8 +448,20 @@ nav.scrolled { background: rgba(250,248,243,.92); backdrop-filter: blur(20px); b
 .pcard-tag { font-family: var(--ff-mono); font-size: .42rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-muted); transition: color .3s; }
 .pcard-od:hover .pcard-tag { color: rgba(240,230,200,.35); }
 
-.pcard-visual { height: 120px; margin-bottom: 1.8rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: rgba(201,169,110,.04); transition: background .4s; }
-.pcard-od:hover .pcard-visual { background: rgba(255,255,255,.03); }
+.pcard-visual { height: 120px; margin-bottom: 1.8rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: transparent !important; border: 1px solid rgba(255,255,255,.18); transition: background .4s, border-color .3s; }
+.pcard-visual-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .35s ease; }
+.pcard-visual-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+.pcard-od:hover .pcard-visual { background: transparent !important; border-color: rgba(255,255,255,.25); }
+#cardVideoPopup { position:fixed; z-index:100000; display:none; background:#000; border:1px solid rgba(255,255,255,.15); border-radius:14px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.07); transition:width .22s cubic-bezier(.23,1,.32,1), height .22s cubic-bezier(.23,1,.32,1), left .22s cubic-bezier(.23,1,.32,1), top .22s cubic-bezier(.23,1,.32,1); animation:cvpIn .3s cubic-bezier(.23,1,.32,1); }
+@keyframes cvpIn { from { opacity:0; transform:scale(.88); } to { opacity:1; transform:scale(1); } }
+#cardVideoPopup video { width:100%; height:100%; object-fit:contain; display:block; cursor:default; }
+#cardVideoPopup .card-video-close { position:absolute; top:10px; right:10px; z-index:2; width:32px; height:32px; border:none; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; font-size:1rem; line-height:1; cursor:pointer; transition:background .2s; }
+#cardVideoPopup .card-video-close:hover { background:rgba(255,255,255,.35); cursor:pointer; }
+#cardVideoPopup .card-video-title { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:1; width:auto; max-width:90%; text-align:center; color:#fff; font-size:1.05rem; letter-spacing:.08em; text-transform:uppercase; opacity:.3; padding:0; background:none; border-radius:0; backdrop-filter:none; -webkit-backdrop-filter:none; pointer-events:none; text-shadow:0 0 14px rgba(0,0,0,.6); }
+/* Cursor restore when any popup is open */
+body.popup-open, body.popup-open * { cursor:default !important; }
+
+
 
 .pcard-h3 { font-family: var(--ff-display); font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: .65rem; transition: color .3s; line-height: 1.1; }
 .pcard-od:hover .pcard-h3 { color: var(--cream-light); }
@@ -1127,14 +1139,17 @@ html { scroll-behavior:smooth; }
   </div>
   <div class="product-grid-od">
 
-    <div class="pcard-od reveal" style="cursor:pointer;"
-      data-num="01" data-tag="Woven" data-icon="✦" data-img="KAHWA CO.png"
+    <div class="pcard-od reveal video-hover" style="cursor:pointer;"
+      data-num="01" data-tag="Woven" data-icon="✦" data-img="KAHWA CO.png" data-video="woven labels.mp4"
       data-title="Woven Labels"
       data-desc="High-density woven labels in polyester, cotton &amp; satin. 1200 DPI precision weave for photorealistic branding."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 01</span><span class="pcard-tag">Woven</span></div>
       <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
-        <img src="KAHWA CO.png" alt="Custom woven label for garments – polyester and satin woven labels manufacturer India" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img class="pcard-visual-img" src="KAHWA CO.png" alt="Custom woven label for garments – polyester and satin woven labels manufacturer India"/>
+        <video class="pcard-visual-video" muted loop playsinline preload="metadata">
+          <source src="woven labels.mp4" type="video/mp4" />
+        </video>
         <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Woven Labels</h3>
@@ -1143,14 +1158,18 @@ html { scroll-behavior:smooth; }
       <div class="pcard-gold-bar"></div>
     </div>
 
-    <div class="pcard-od reveal reveal-delay-1" style="cursor:pointer;"
-      data-num="02" data-tag="Paper" data-icon="◇"
+    <div class="pcard-od reveal reveal-delay-1 video-hover" style="cursor:pointer;"
+      data-num="02" data-tag="Paper" data-icon="◇" data-img="hang tag.png" data-video="hang tags.mp4"
       data-title="Hang Tags"
       data-desc="Premium board, kraft &amp; specialty materials. Custom die-cutting, gold foiling, and embossing for luxury brands."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 02</span><span class="pcard-tag">Paper</span></div>
-      <div class="pcard-visual">
-        <div class="mini-hangtag"><div class="mini-hangtag-brand">SKL</div><div class="mini-hangtag-line"></div><div class="mini-hangtag-num">HANG TAG</div></div>
+      <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
+        <img class="pcard-visual-img" src="hang tag.png" alt="Premium hang tags with custom foil and die-cut details" />
+        <video class="pcard-visual-video" muted loop playsinline preload="metadata">
+          <source src="hang tags.mp4" type="video/mp4" />
+        </video>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Hang Tags</h3>
       <p class="pcard-p">Premium board, kraft &amp; specialty materials. Custom die-cutting, gold foiling, and embossing for luxury brands.</p>
@@ -1158,14 +1177,18 @@ html { scroll-behavior:smooth; }
       <div class="pcard-gold-bar"></div>
     </div>
 
-    <div class="pcard-od reveal reveal-delay-2" style="cursor:pointer;"
-      data-num="03" data-tag="Transfer" data-icon="◈"
+    <div class="pcard-od reveal reveal-delay-2 video-hover" style="cursor:pointer;"
+      data-num="03" data-tag="Transfer" data-icon="◈" data-img="activewear.png" data-video="heat transfer.mp4"
       data-title="Heat Transfer"
       data-desc="Durable, wash-resistant no-label-feel transfers. Perfect for sportswear, activewear, and performance brands."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 03</span><span class="pcard-tag">Transfer</span></div>
-      <div class="pcard-visual">
-        <div class="mini-heat"><div class="mini-heat-text">HEAT</div></div>
+      <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
+        <img class="pcard-visual-img" src="activewear.png" alt="Heat transfer label on activewear garment"/>
+        <video class="pcard-visual-video" muted loop playsinline preload="metadata">
+          <source src="heat transfer.mp4" type="video/mp4" />
+        </video>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Heat Transfer</h3>
       <p class="pcard-p">Durable, wash-resistant no-label-feel transfers. Perfect for sportswear, activewear, and performance brands.</p>
@@ -1190,13 +1213,14 @@ html { scroll-behavior:smooth; }
     </div>
 
     <div class="pcard-od reveal" style="cursor:pointer;"
-      data-num="05" data-tag="Compliance" data-icon="◉"
+      data-num="05" data-tag="Compliance" data-icon="◉" data-img="img5.png"
       data-title="Wash Care Labels"
       data-desc="Multi-language printing for global export. Fully compliant with EU, US, and international standards."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 05</span><span class="pcard-tag">Compliance</span></div>
-      <div class="pcard-visual">
-        <div class="mini-washcare"><div>🌡</div><div>🔄</div><div>❌</div><div>🧺</div><div>♻️</div></div>
+      <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
+        <img src="img5.png" alt="Wash care label examples with international care symbols" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Wash Care Labels</h3>
       <p class="pcard-p">Multi-language printing for global export. Fully compliant with EU, US, and international standards.</p>
@@ -1205,16 +1229,14 @@ html { scroll-behavior:smooth; }
     </div>
 
     <div class="pcard-od reveal reveal-delay-1" style="cursor:pointer;"
-      data-num="06" data-tag="Barcode" data-icon="▤"
+      data-num="06" data-tag="Barcode" data-icon="▤" data-img="img4.png"
       data-title="Barcode Labels"
       data-desc="GS1-compliant labels. Thermal transfer and digital print options for premium retail and global export."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 06</span><span class="pcard-tag">Barcode</span></div>
-      <div class="pcard-visual">
-        <div class="mini-barcode">
-          <div class="bc-bars"><span style="width:2px"></span><span style="width:5px"></span><span style="width:2px"></span><span style="width:8px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:2px"></span><span style="width:7px"></span><span style="width:2px"></span><span style="width:6px"></span><span style="width:2px"></span><span style="width:9px"></span></div>
-          <div class="bc-num">8 90011 23456 7</div>
-        </div>
+      <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
+        <img src="img4.png" alt="Barcode labels and retail-ready packaging" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Barcode Labels</h3>
       <p class="pcard-p">GS1-compliant labels. Thermal transfer and digital print options for premium retail and global export.</p>
@@ -1223,13 +1245,14 @@ html { scroll-behavior:smooth; }
     </div>
 
     <div class="pcard-od reveal reveal-delay-2" style="cursor:pointer;"
-      data-num="07" data-tag="Satin" data-icon="✦"
+      data-num="07" data-tag="Satin" data-icon="✦" data-img="Lingerie.png"
       data-title="Satin Labels"
       data-desc="Ultra-soft finish for luxury lingerie, silk garments, and high-end fashion boutiques worldwide."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 07</span><span class="pcard-tag">Satin</span></div>
-      <div class="pcard-visual">
-        <div class="mini-satin"><div class="mini-satin-text">SATIN</div></div>
+      <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
+        <img src="Lingerie.png" alt="Satin garment label on luxury lingerie" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Satin Labels</h3>
       <p class="pcard-p">Ultra-soft finish for luxury lingerie, silk garments, and high-end fashion boutiques worldwide.</p>
@@ -1238,13 +1261,14 @@ html { scroll-behavior:smooth; }
     </div>
 
     <div class="pcard-od reveal reveal-delay-3" style="cursor:pointer;"
-      data-num="08" data-tag="Custom" data-icon="◬"
+      data-num="08" data-tag="Custom" data-icon="◬" data-img="Jackets.png"
       data-title="Embroidered Badges"
       data-desc="Circular, shield &amp; custom-shape embroidered patches. School badges, brand patches &amp; institutional emblems with multicolor thread work."
       onclick="openProductPopup(this)">
       <div class="pcard-meta"><span class="pcard-num">Nº 08</span><span class="pcard-tag">Custom</span></div>
-      <div class="pcard-visual">
-        <div class="mini-patch">CUSTOM<br/>TRIMS</div>
+      <div class="pcard-visual" style="padding:0;overflow:hidden;position:relative;">
+        <img src="Jackets.png" alt="Custom embroidered badge and apparel patch sample" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="pcard-click-hint">Click · 3D View</div>
       </div>
       <h3 class="pcard-h3">Embroidered Badges</h3>
       <p class="pcard-p">Circular, shield &amp; custom-shape embroidered patches. School badges, brand patches &amp; institutional emblems with multicolor thread work.</p>
@@ -2192,23 +2216,26 @@ html { scroll-behavior:smooth; }
 </a>
 
 <script>
-// ── Hero Video — 00:20 se 02:25 tak loop, pehli click pe voice on ────
+// ── Hero Video — 00:20 se 02:25 tak loop, autoplay enabled ────
 (function() {
   const vid = document.getElementById('heroBgVideo');
   if (!vid) return;
   const START = 20;
   const END   = 145;
+  
   vid.addEventListener('loadedmetadata', () => {
     vid.currentTime = START;
+    vid.play().catch(function(){});
   });
+  
   vid.addEventListener('timeupdate', () => {
     if (vid.currentTime >= END) vid.currentTime = START;
   });
-  document.addEventListener('click', function unmuteOnce() {
-    vid.muted = false;
-    vid.volume = 0.6;
-    document.removeEventListener('click', unmuteOnce);
-  }, { once: true });
+  
+  // Trigger autoplay on page load
+  window.addEventListener('load', () => {
+    vid.play().catch(function(){});
+  });
 })();
 
 // ── Page Loader ──────────────────────────────────────────────────────
@@ -2225,11 +2252,10 @@ let rx = cx, ry = cy;
 document.addEventListener('mousemove', e => {
   cx = e.clientX; cy = e.clientY;
   dot.style.left = cx + 'px'; dot.style.top = cy + 'px';
-  // Show/hide custom cursor based on popup state
-  const popup = document.getElementById('productPopup');
-  const isPopupOpen = popup && popup.style.display === 'flex';
-  dot.style.opacity = isPopupOpen ? '0' : '1';
-  ring.style.opacity = isPopupOpen ? '0' : '1';
+  // Dots hidden when any popup is open (controlled by popup-open class)
+  const hidden = document.body.classList.contains('popup-open') ? '0' : '1';
+  dot.style.opacity  = hidden;
+  ring.style.opacity = hidden;
 });
 (function lerpRing() {
   rx += (cx - rx) * .11; ry += (cy - ry) * .11;
@@ -2545,6 +2571,11 @@ function openProductPopup(card) {
   const tag      = card.dataset.tag;
   const icon     = card.dataset.icon || '✦';
 
+  if (card.dataset.video) {
+    openCardVideoPopup(card, { unmute: true });
+    return;
+  }
+
   document.getElementById('ppFootNum').textContent   = 'Nº ' + num;
   document.getElementById('ppFootTitle').textContent = title;
 
@@ -2568,27 +2599,212 @@ function openProductPopup(card) {
 
   popup.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  document.body.classList.add('popup-open');
 
   // ── Cursor fix: hide custom gold dots, show native arrow ──
   const dot  = document.getElementById('cur-dot');
   const ring = document.getElementById('cur-ring');
   if (dot)  dot.style.opacity  = '0';
   if (ring) ring.style.opacity = '0';
-  document.documentElement.style.cursor = 'default';
 }
 
 function closeProductPopup() {
   document.getElementById('productPopup').style.display = 'none';
   document.body.style.overflow = '';
+  document.body.classList.remove('popup-open');
 
   // ── Restore custom cursor ──
   const dot  = document.getElementById('cur-dot');
   const ring = document.getElementById('cur-ring');
   if (dot)  dot.style.opacity  = '1';
   if (ring) ring.style.opacity = '1';
-  document.documentElement.style.cursor = 'none';
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProductPopup(); });
+
+function playCardVideo(card) {
+  document.querySelectorAll('.pcard-od.video-active').forEach(function(activeCard) {
+    if (activeCard === card) return;
+    const activeVideo = activeCard.querySelector('video.pcard-visual-video');
+    const activeImg = activeCard.querySelector('img.pcard-visual-img');
+    if (activeVideo) {
+      activeVideo.pause();
+      activeVideo.style.display = 'none';
+    }
+    if (activeImg) {
+      activeImg.style.opacity = '1';
+    }
+    activeCard.classList.remove('video-active');
+  });
+
+  let video = card.querySelector('video.pcard-visual-video');
+  const img = card.querySelector('img.pcard-visual-img');
+  if (!img) return;
+
+  if (!video && card.dataset.video) {
+    video = document.createElement('video');
+    video.className = 'pcard-visual-video';
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.objectFit = 'cover';
+    video.style.display = 'none';
+    video.style.position = 'absolute';
+    video.style.inset = '0';
+    const source = document.createElement('source');
+    source.src = card.dataset.video;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    const visual = card.querySelector('.pcard-visual');
+    if (visual) {
+      const hint = visual.querySelector('.pcard-click-hint');
+      visual.insertBefore(video, hint || null);
+    }
+  }
+  if (!video) return;
+
+  card.classList.add('video-active');
+  img.style.opacity = '0';
+  video.style.display = 'block';
+  video.currentTime = 0;
+  const playPromise = video.play();
+  if (playPromise && playPromise.catch) playPromise.catch(function() {});
+}
+
+function stopCardVideo(card) {
+  const video = card.querySelector('video.pcard-visual-video');
+  const img = card.querySelector('img.pcard-visual-img');
+  if (!video || !img) return;
+  video.pause();
+  video.style.display = 'none';
+  img.style.opacity = '1';
+  card.classList.remove('video-active');
+}
+
+function openCardVideoPopup(card, options = {}) {
+  closeCardVideoPopup();
+  const videoSrc = card.dataset.video;
+  const title = card.dataset.title || '';
+  const popupOverlay = document.getElementById('cardVideoPopupOverlay');
+  const popup = document.getElementById('cardVideoPopup');
+  const popupVideo = document.getElementById('cardVideoPopupVideo');
+  const popupTitle = document.getElementById('cardVideoPopupTitle');
+  if (!popupOverlay || !popup || !popupVideo || !popupTitle) return;
+
+  document.querySelectorAll('.pcard-od.video-active').forEach(function(activeCard) {
+    stopCardVideo(activeCard);
+  });
+
+  const unmute = options.unmute === true;
+  popupTitle.textContent = title;
+  popupVideo.loop = true;
+  popupVideo.muted = !unmute;   // muted on hover, unmuted only on click
+  popupVideo.playsInline = true;
+
+  // ── Cursor: restore normal pointer while popup is visible ──
+  document.body.classList.add('popup-open');
+  const dot  = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  if (dot)  dot.style.opacity  = '0';
+  if (ring) ring.style.opacity = '0';
+
+  // ── Position popup: center in the overlay ──
+  function placePopup(w, h) {
+    popup.style.width  = w + 'px';
+    popup.style.height = h + 'px';
+    popup.style.left   = '';
+    popup.style.top    = '';
+    popup.style.transform = 'none';
+  }
+
+  // Show popup centered in the overlay
+  placePopup(Math.min(window.innerWidth - 40, 420), Math.min(window.innerHeight - 40, 260));
+  popupOverlay.style.display = 'flex';
+  popup.style.display = 'block';
+
+  // ── Resize to actual video dimensions once metadata loads ──
+  const resizePopupToVideo = function() {
+    if (!popupVideo.videoWidth || !popupVideo.videoHeight) return;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    // Max popup = 90% of viewport, but never bigger than native video size
+    const maxW = Math.min(vw * 0.90, 960);
+    const maxH = Math.min(vh * 0.88, 720);
+    const scale = Math.min(maxW / popupVideo.videoWidth, maxH / popupVideo.videoHeight, 1);
+    const w = Math.round(popupVideo.videoWidth  * scale);
+    const h = Math.round(popupVideo.videoHeight * scale);
+    placePopup(w, h);
+  };
+
+  popupVideo.onloadedmetadata = function() { resizePopupToVideo(); popupVideo.play().catch(function(){}); };
+  popupVideo.onloadeddata     = function() { resizePopupToVideo(); popupVideo.play().catch(function(){}); };
+
+  popupVideo.src = videoSrc;
+  popupVideo.load();
+  popupVideo.play().catch(function(){});
+
+  stopCardVideo(card);
+}
+
+function closeCardVideoPopup() {
+  const popupOverlay = document.getElementById('cardVideoPopupOverlay');
+  const popupVideo = document.getElementById('cardVideoPopupVideo');
+  if (!popupOverlay || !popupVideo) return;
+  popupOverlay.style.display = 'none';
+  popupVideo.pause();
+  popupVideo.src = '';
+
+  // ── Restore custom gold cursor ──
+  document.body.classList.remove('popup-open');
+  const dot  = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  if (dot)  dot.style.opacity  = '1';
+  if (ring) ring.style.opacity = '1';
+}
+
+let cardVideoHoverTimer = null;
+
+function scheduleCardVideoPopup(card) {
+  clearCardVideoPopupTimer();
+  cardVideoHoverTimer = setTimeout(function() {
+    openCardVideoPopup(card);
+  }, 2000);
+}
+
+function clearCardVideoPopupTimer() {
+  if (cardVideoHoverTimer) {
+    clearTimeout(cardVideoHoverTimer);
+    cardVideoHoverTimer = null;
+  }
+}
+
+  document.querySelectorAll('.pcard-od[data-video]').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      scheduleCardVideoPopup(card);
+    });
+    card.addEventListener('mouseleave', function() {
+      clearCardVideoPopupTimer();
+      stopCardVideo(card);
+    });
+    card.addEventListener('touchstart', function() {
+      scheduleCardVideoPopup(card);
+    });
+    card.addEventListener('touchend', function() {
+      clearCardVideoPopupTimer();
+      stopCardVideo(card);
+    });
+    card.addEventListener('touchcancel', function() {
+      clearCardVideoPopupTimer();
+      stopCardVideo(card);
+    });
+  });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeProductPopup();
+    closeCardVideoPopup();
+  }
+});
 </script>
 
 <!-- ════════ PRODUCT 3D POPUP ════════ -->
@@ -2616,6 +2832,14 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProduct
       <span class="pp-footer-title" id="ppFootTitle"></span>
       <a href="#contact" class="pp-footer-btn" onclick="closeProductPopup()">Inquire →</a>
     </div>
+  </div>
+</div>
+
+<div id="cardVideoPopupOverlay" onclick="closeCardVideoPopup()" style="display:none;position:fixed;inset:0;z-index:100000;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.56);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+  <div id="cardVideoPopup" onclick="event.stopPropagation()" style="position:relative;width:min(92vw,740px);max-height:90vh;background:#000;border:1px solid rgba(255,255,255,.15);border-radius:18px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.07);">
+    <button class="card-video-close" onclick="event.stopPropagation(); closeCardVideoPopup()">✕</button>
+    <div class="card-video-title" id="cardVideoPopupTitle"></div>
+    <video id="cardVideoPopupVideo" controls loop playsinline></video>
   </div>
 </div>
 
@@ -2888,6 +3112,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProduct
       card.classList.remove('ind-timing');
     });
   });
+
 })();
 </script>
 <!-- ══ GEO / AI SEO — Entity & Intent Block ══════════════════
