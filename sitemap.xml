@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
   <url>
     <loc>https://shreekrishnalabels.in/</loc>
     <lastmod>2026-06-01</lastmod>
@@ -9,12 +8,11 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://shreekrishnalabels.in/og-image.png</image:loc>
-      <image:title>Shree Krishna Labels – Woven Labels Manufacturer Mumbai</image:title>
+      <image:title>Shree Krishna Labels – Woven Labels Manufacturer Mumbai India</image:title>
     </image:image>
     <image:image>
       <image:loc>https://shreekrishnalabels.in/MAINLOGO.png</image:loc>
-      <image:title>Shree Krishna Labels Logo – ISO 9001 Certified</image:title>
+      <image:title>Shree Krishna Labels Logo – ISO 9001 Certified Since 1998</image:title>
     </image:image>
   </url>
-
 </urlset>
