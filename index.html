@@ -574,110 +574,321 @@ nav.scrolled { background: rgba(250,248,243,.92); backdrop-filter: blur(20px); b
 .pcard-visual-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .35s ease; }
 .pcard-visual-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
 .pcard-od:hover .pcard-visual { background: transparent !important; border-color: rgba(255,255,255,.25); }
-/* ── SKL Inline Floating Video Popup — 21st Dev Style ── */
-#sklFloatingPopup {
+/* ══════════════════════════════════════════════════════
+   SKL Floating Product Popup — 21st Dev Edition
+   Two-page sliding card: Media → Specs
+   ══════════════════════════════════════════════════════ */
+
+#sklPopup {
   position: fixed;
   z-index: 100001;
-  width: 340px;
-  background: rgba(10, 8, 6, 0.82);
-  backdrop-filter: blur(24px) saturate(1.8);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8);
-  border: 1px solid rgba(201, 169, 110, 0.25);
-  border-radius: 16px;
+  width: 360px;
+  background: rgba(8, 6, 4, 0.90);
+  backdrop-filter: blur(32px) saturate(1.8);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid rgba(201, 169, 110, 0.18);
+  border-radius: 20px;
   overflow: hidden;
   box-shadow:
-    0 0 0 0.5px rgba(201, 169, 110, 0.1),
-    0 24px 60px rgba(0, 0, 0, 0.7),
-    0 8px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 0 0 0.5px rgba(201, 169, 110, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.8),
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   display: none;
   flex-direction: column;
-  transform-origin: top center;
-  animation: sklPopupIn 0.32s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   pointer-events: all;
 }
-#sklFloatingPopup.closing {
-  animation: sklPopupOut 0.22s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+/* Gold top accent line */
+#sklPopup::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.7) 40%, rgba(201,169,110,0.9) 50%, rgba(201,169,110,0.7) 60%, transparent);
+  z-index: 20; pointer-events: none;
 }
-@keyframes sklPopupIn {
-  from { opacity: 0; transform: scale(0.88) translateY(-8px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+
+/* Slide container — holds both pages side by side */
+.skl-slides {
+  display: flex;
+  width: 200%;
+  transition: transform 0.38s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
 }
-@keyframes sklPopupOut {
-  from { opacity: 1; transform: scale(1) translateY(0); }
-  to   { opacity: 0; transform: scale(0.88) translateY(-8px); }
+.skl-slides.show-details { transform: translateX(-50%); }
+
+.skl-pg {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
-#sklFloatingPopup .skl-fp-video-wrap {
+
+/* ── Media wrap ── */
+.skl-media-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
   background: #000;
   overflow: hidden;
 }
-#sklFloatingPopup .skl-fp-video-wrap video {
-  width: 100%; height: 100%; object-fit: cover; display: block;
+.skl-media-wrap video,
+.skl-media-wrap img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: none;
 }
-#sklFloatingPopup .skl-fp-video-wrap::before {
+.skl-media-wrap video.skl-active,
+.skl-media-wrap img.skl-active { display: block; }
+/* Bottom gradient for controls legibility */
+.skl-media-wrap::after {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.8), transparent);
-  z-index: 2;
+  position: absolute; bottom: 0; left: 0; right: 0; height: 56px;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  z-index: 2; pointer-events: none;
 }
-#sklFpMute {
-  position: absolute; bottom: 8px; left: 8px; z-index: 5;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(15, 13, 10, 0.7);
-  border: 1px solid rgba(201, 169, 110, 0.3);
-  color: rgba(201, 169, 110, 0.9);
-  cursor: pointer;
+
+/* Video controls overlay */
+.skl-vid-controls {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0 10px 8px;
+  display: flex; align-items: center; gap: 8px;
+  z-index: 5;
+}
+.skl-progress-track {
+  flex: 1; height: 2px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 2px; overflow: hidden;
+}
+#sklProgress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0.6));
+  width: 0%;
+  border-radius: 2px;
+  transition: none;
+}
+.skl-mute-btn {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(10,8,5,0.65);
+  border: 1px solid rgba(201,169,110,0.25);
+  color: rgba(201,169,110,0.9);
   display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
-  font-size: 12px;
+  flex-shrink: 0;
 }
-#sklFpMute:hover { background: rgba(201,169,110,0.15); border-color: rgba(201,169,110,0.6); }
-#sklFpProgress {
-  position: absolute; bottom: 0; left: 0;
-  height: 2px; background: var(--gold); width: 0%; z-index: 3;
-}
-#sklFpClose {
-  position: absolute; top: 8px; right: 8px; z-index: 10;
+.skl-mute-btn:hover { background: rgba(201,169,110,0.15); border-color: rgba(201,169,110,0.5); }
+
+/* Close button — appears on both pages */
+.skl-close-btn {
+  position: absolute; top: 9px; right: 9px; z-index: 20;
   width: 26px; height: 26px; border-radius: 50%;
-  background: rgba(15, 13, 10, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.75);
+  background: rgba(8,6,4,0.72);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.72);
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600;
+  font-size: 10px; font-weight: 700; line-height: 1;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
-  line-height: 1;
 }
-#sklFpClose:hover { background: rgba(255,255,255,0.18); color: #fff; border-color: rgba(255,255,255,0.3); }
-#sklFloatingPopup .skl-fp-info {
-  padding: 12px 14px 14px;
-  display: flex; flex-direction: column; gap: 6px;
+.skl-close-btn:hover { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.25); }
+
+/* ── Page 1 info panel ── */
+.skl-card-info {
+  padding: 14px 16px 8px;
+  display: flex; flex-direction: column; gap: 7px;
 }
-.skl-fp-meta { display: flex; align-items: center; justify-content: space-between; }
-.skl-fp-num { font-family: var(--ff-mono); font-size: 0.38rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(201,169,110,0.5); }
-.skl-fp-tag { font-family: var(--ff-mono); font-size: 0.36rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.1); }
-.skl-fp-title { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 400; color: rgba(245,238,220,0.95); line-height: 1.2; letter-spacing: -0.01em; }
-.skl-fp-desc { font-size: 0.64rem; font-weight: 300; line-height: 1.7; color: rgba(210,200,175,0.45); }
-.skl-fp-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,169,110,0.2), transparent); margin: 4px 0; }
-.skl-fp-footer { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px 12px; border-top: 1px solid rgba(255,255,255,0.06); }
-.skl-fp-cta { font-family: var(--ff-mono); font-size: 0.4rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,169,110,0.85); text-decoration: none; padding: 6px 14px; background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2); border-radius: 20px; transition: background 0.25s, border-color 0.25s, color 0.25s; display: inline-flex; align-items: center; gap: 4px; }
-.skl-fp-cta:hover { background: rgba(201,169,110,0.18); border-color: rgba(201,169,110,0.5); color: rgba(201,169,110,1); }
-.skl-fp-hold-hint { font-family: var(--ff-mono); font-size: 0.36rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.18); }
-.skl-hold-ring { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; z-index: 5; pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+.skl-card-meta {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.skl-meta-left { display: flex; align-items: center; gap: 8px; }
+.skl-num {
+  font-family: var(--ff-mono); font-size: 0.38rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(201,169,110,0.45);
+}
+.skl-tag {
+  font-family: var(--ff-mono); font-size: 0.32rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  padding: 2px 8px; border-radius: 20px;
+}
+.skl-details-btn {
+  font-family: var(--ff-mono); font-size: 0.34rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(201,169,110,0.7);
+  background: rgba(201,169,110,0.06);
+  border: 0.5px solid rgba(201,169,110,0.2);
+  border-radius: 20px; padding: 3px 10px;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.skl-details-btn:hover { background: rgba(201,169,110,0.14); border-color: rgba(201,169,110,0.4); color: rgba(201,169,110,0.95); }
+.skl-card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.14), transparent);
+}
+.skl-card-title {
+  font-family: var(--ff-display);
+  font-size: 1.15rem; font-weight: 400;
+  color: rgba(245,238,220,0.95);
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+.skl-card-desc {
+  font-size: 0.65rem; font-weight: 300;
+  line-height: 1.7; color: rgba(210,200,175,0.38);
+}
+.skl-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 16px 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 2px;
+}
+.skl-cta-pill {
+  font-family: var(--ff-mono); font-size: 0.38rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(201,169,110,0.88); text-decoration: none;
+  padding: 6px 14px;
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.22);
+  border-radius: 20px;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.skl-cta-pill:hover { background: rgba(201,169,110,0.18); border-color: rgba(201,169,110,0.5); color: rgba(201,169,110,1); }
+.skl-esc-hint {
+  font-family: var(--ff-mono); font-size: 0.33rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.13);
+}
+
+/* ── Page 2: Specs / Details ── */
+.skl-det-header {
+  display: flex; align-items: center;
+  padding: 11px 14px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  gap: 8px;
+}
+.skl-back-btn {
+  font-family: var(--ff-mono); font-size: 0.34rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(201,169,110,0.65);
+  background: rgba(201,169,110,0.07);
+  border: 0.5px solid rgba(201,169,110,0.18);
+  border-radius: 20px; padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.skl-back-btn:hover { background: rgba(201,169,110,0.14); color: rgba(201,169,110,0.9); }
+.skl-det-num {
+  font-family: var(--ff-mono); font-size: 0.36rem;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(201,169,110,0.3); flex: 1; text-align: center;
+}
+/* Page 2 close btn — static position */
+.skl-det-header .skl-close-btn {
+  position: static; flex-shrink: 0;
+}
+.skl-det-body {
+  padding: 16px 18px 12px;
+  display: flex; flex-direction: column; gap: 10px;
+  flex: 1;
+}
+.skl-det-title {
+  font-family: var(--ff-display);
+  font-size: 1.35rem; font-weight: 300;
+  color: rgba(245,238,220,0.9);
+  line-height: 1.1; letter-spacing: -0.02em;
+}
+.skl-det-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,169,110,0.45), transparent);
+}
+.skl-specs {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 9px;
+}
+.skl-specs li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.68rem; font-weight: 300;
+  line-height: 1.55; color: rgba(225,215,190,0.62);
+}
+.skl-specs li::before {
+  content: '✦';
+  color: rgba(201,169,110,0.45);
+  font-size: 0.4rem;
+  flex-shrink: 0; margin-top: 3px;
+}
+.skl-det-footer {
+  display: flex; gap: 8px;
+  padding: 10px 18px 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.skl-wa-btn {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  background: #25D366; color: #fff;
+  font-family: var(--ff-mono); font-size: 0.37rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 9px 10px; text-decoration: none;
+  border-radius: 8px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.skl-wa-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.skl-sample-btn {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--ff-mono); font-size: 0.37rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(201,169,110,0.85); text-decoration: none;
+  padding: 9px 10px;
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.skl-sample-btn:hover { background: rgba(201,169,110,0.1); border-color: rgba(201,169,110,0.45); }
+
+/* Hold ring on card thumbnail */
+.skl-hold-ring {
+  position: absolute; top: 8px; right: 8px;
+  width: 32px; height: 32px; z-index: 5;
+  pointer-events: none; opacity: 0; transition: opacity 0.2s;
+}
 .pcard-od.skl-holding .skl-hold-ring { opacity: 1; }
-.skl-ring-track { fill: none; stroke: rgba(201,169,110,0.2); stroke-width: 2.5; }
-.skl-ring-fill { fill: none; stroke: var(--gold); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 88; stroke-dashoffset: 88; transform-origin: center; transform: rotate(-90deg); transition: none; }
+.skl-ring-track { fill: none; stroke: rgba(201,169,110,0.18); stroke-width: 2.5; }
+.skl-ring-fill {
+  fill: none; stroke: var(--gold); stroke-width: 2.5;
+  stroke-linecap: round; stroke-dasharray: 88; stroke-dashoffset: 88;
+  transform-origin: center; transform: rotate(-90deg); transition: none;
+}
 .pcard-od.skl-holding .skl-ring-fill { stroke-dashoffset: 0; transition: stroke-dashoffset 3s linear; }
-.pcard-click-hint { position: absolute; bottom: 0.6rem; right: 0.6rem; font-family: var(--ff-mono); font-size: 0.33rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.7); background: rgba(15,13,10,0.6); padding: 0.28rem 0.55rem; backdrop-filter: blur(4px); pointer-events: none; }
-body.skl-popup-open, body.skl-popup-open * { cursor: default !important; }
+
+/* Card hint label */
+.pcard-click-hint {
+  position: absolute; bottom: 0.6rem; right: 0.6rem;
+  font-family: var(--ff-mono); font-size: 0.33rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  background: rgba(15,13,10,0.6); padding: 0.28rem 0.55rem;
+  backdrop-filter: blur(4px); pointer-events: none;
+}
+
+/* Popup enter / exit */
+@keyframes sklIn  { from { opacity:0; transform: scale(0.9) translateY(-10px); } to { opacity:1; transform: scale(1) translateY(0); } }
+@keyframes sklOut { from { opacity:1; transform: scale(1); } to { opacity:0; transform: scale(0.88) translateY(-8px); } }
+#sklPopup.skl-entering { animation: sklIn  0.3s cubic-bezier(0.23,1,0.32,1) forwards; }
+#sklPopup.skl-leaving  { animation: sklOut 0.2s cubic-bezier(0.23,1,0.32,1) forwards; }
+
+body.skl-open, body.skl-open * { cursor: default !important; }
+
+/* Mobile — bottom sheet */
 @media (max-width: 768px) {
-  #sklFloatingPopup { width: calc(100vw - 24px); max-width: 380px; left: 50% !important; transform-origin: bottom center; bottom: 12px !important; top: auto !important; }
-  @keyframes sklPopupIn { from { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.94); } to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); } }
-  @keyframes sklPopupOut { from { opacity: 1; transform: translateX(-50%) scale(1); } to { opacity: 0; transform: translateX(-50%) translateY(16px) scale(0.94); } }
+  #sklPopup {
+    width: calc(100vw - 24px); max-width: 390px;
+    left: 50% !important; top: auto !important; bottom: 12px !important;
+  }
+  @keyframes sklIn  { from { opacity:0; transform: translateX(-50%) translateY(18px) scale(0.94); } to { opacity:1; transform: translateX(-50%) translateY(0) scale(1); } }
+  @keyframes sklOut { from { opacity:1; transform: translateX(-50%) scale(1); } to { opacity:0; transform: translateX(-50%) translateY(14px) scale(0.94); } }
 }
 
 
@@ -3053,523 +3264,292 @@ function fixContact() {
 fixContact();
 window.addEventListener('resize', fixContact);
 
-// ── Unified Product 3D Popup ──────────────────────────────────────────
-function openProductPopup(card) {
-  const popup    = document.getElementById('productPopup');
-  const imgWrap  = document.getElementById('ppImgWrap');
-  const textCard = document.getElementById('ppTextCard');
-  const img      = card.dataset.img;
-  const title    = card.dataset.title;
-  const desc     = card.dataset.desc;
-  const num      = card.dataset.num;
-  const tag      = card.dataset.tag;
-  const icon     = card.dataset.icon || '✦';
+// ══════════════════════════════════════════════════════
+// SKL Floating Product Popup — 21st Dev Edition
+// Two-page card: Media view → Specs view
+// ══════════════════════════════════════════════════════
 
-  if (card.dataset.video) {
-    sklOpenPopup(card);
-    return;
-  }
+var _p = null, _vid = null, _img = null, _bd = null, _slides = null;
+var _holdTimer = null, _holdCard = null, _isMuted = true, _raf = null;
+var _isOpen = false;
 
-  document.getElementById('ppFootNum').textContent   = 'Nº ' + num;
-  document.getElementById('ppFootTitle').textContent = title;
+// Product specs shown on page 2
+var SKL_SPECS = {
+  '01': ['1200 DPI precision weave', 'Polyester, cotton & satin options', 'ISO 9001 certified quality', 'MOQ 500 pcs · 7–21 day delivery'],
+  '02': ['Premium board & kraft paper', 'Gold foiling & die-cut finish', 'Custom shape & size available', 'MOQ 500 pcs · 7–21 day delivery'],
+  '03': ['Wash-resistant, no-label feel', 'Polyester & nylon substrates', 'Durable through 50+ wash cycles', 'MOQ 500 pcs · 7–21 day delivery'],
+  '04': ['Hot-stamp foil embossing', 'Gold & silver metallic finish', 'Raised texture, luxury feel', 'MOQ 500 pcs · 10–21 day delivery'],
+  '05': ['10+ language print options', 'EU, US & global compliance', 'Symbols + text care instructions', 'MOQ 1000 pcs · 5–14 day delivery'],
+  '06': ['GS1-compliant barcode format', 'Thermal & digital print options', 'Retail-ready & export-certified', 'MOQ 1000 pcs · 5–10 day delivery'],
+  '07': ['Ultra-soft satin weave', 'No-itch, skin-friendly material', 'Premium finish for luxury wear', 'MOQ 500 pcs · 7–21 day delivery'],
+  '08': ['Multicolor thread embroidery', 'Shield, circle & custom shapes', 'School badges & brand patches', 'MOQ 500 pcs · 14–21 day delivery']
+};
 
-  if (img) {
-    imgWrap.style.display  = 'flex';
-    textCard.style.display = 'none';
-    const ppImg = document.getElementById('ppImg');
-    ppImg.src = img;
-    ppImg.alt = title;
-  } else {
-    imgWrap.style.display  = 'none';
-    textCard.style.display = 'flex';
-    textCard.style.animation = 'none';
-    textCard.offsetHeight;
-    textCard.style.animation = '';
-    document.getElementById('ppTcNum').textContent   = 'Nº ' + num + ' ——— ' + tag;
-    document.getElementById('ppTcIcon').textContent  = icon;
-    document.getElementById('ppTcTitle').textContent = title;
-    document.getElementById('ppTcDesc').textContent  = desc;
-  }
-
-  popup.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  document.body.classList.add('popup-open');
-
-  // ── Cursor fix: hide custom gold dots, show native arrow ──
-  const dot  = document.getElementById('cur-dot');
-  const ring = document.getElementById('cur-ring');
-  if (dot)  dot.style.opacity  = '0';
-  if (ring) ring.style.opacity = '0';
+function _pInit() {
+  _p      = document.getElementById('sklPopup');
+  _vid    = document.getElementById('sklVid');
+  _img    = document.getElementById('sklImg');
+  _bd     = document.getElementById('sklBackdrop');
+  _slides = document.getElementById('sklSlides');
 }
 
-function closeProductPopup() {
-  document.getElementById('productPopup').style.display = 'none';
-  document.body.style.overflow = '';
-  document.body.classList.remove('popup-open');
-
-  // ── Restore custom cursor ──
-  const dot  = document.getElementById('cur-dot');
-  const ring = document.getElementById('cur-ring');
-  if (dot)  dot.style.opacity  = '1';
-  if (ring) ring.style.opacity = '1';
+function _pPosition(card) {
+  if (!_p || !card || window.innerWidth <= 768) return;
+  var r = card.getBoundingClientRect();
+  var pw = 360, ph = 480, m = 14;
+  var vw = window.innerWidth, vh = window.innerHeight;
+  var left = r.right + m;
+  var top  = r.top;
+  if (left + pw > vw - m) left = r.left - pw - m;
+  if (left < m) left = Math.max(m, r.left + r.width / 2 - pw / 2);
+  if (top + ph > vh - m) top = vh - ph - m;
+  if (top < 14) top = 14;
+  _p.style.left   = Math.round(left) + 'px';
+  _p.style.top    = Math.round(top)  + 'px';
+  _p.style.bottom = 'auto';
 }
 
-function playCardVideo(card) {
-  document.querySelectorAll('.pcard-od.video-active').forEach(function(activeCard) {
-    if (activeCard === card) return;
-    const activeVideo = activeCard.querySelector('video.pcard-visual-video');
-    const activeImg = activeCard.querySelector('img.pcard-visual-img');
-    if (activeVideo) {
-      activeVideo.pause();
-      activeVideo.style.display = 'none';
-    }
-    if (activeImg) {
-      activeImg.style.opacity = '1';
-    }
-    activeCard.classList.remove('video-active');
-  });
+function sklOpen(card) {
+  if (!_p) _pInit();
+  if (!_p) return;
 
-  let video = card.querySelector('video.pcard-visual-video');
-  const img = card.querySelector('img.pcard-visual-img');
-  if (!img) return;
-
-  if (!video && card.dataset.video) {
-    video = document.createElement('video');
-    video.className = 'pcard-visual-video';
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.preload = 'metadata';
-    video.style.width = '100%';
-    video.style.height = '100%';
-    video.style.objectFit = 'cover';
-    video.style.display = 'none';
-    video.style.position = 'absolute';
-    video.style.inset = '0';
-    const source = document.createElement('source');
-    source.src = card.dataset.video;
-    source.type = 'video/mp4';
-    video.appendChild(source);
-    const visual = card.querySelector('.pcard-visual');
-    if (visual) {
-      const hint = visual.querySelector('.pcard-click-hint');
-      visual.insertBefore(video, hint || null);
-    }
-  }
-  if (!video) return;
-
-  card.classList.add('video-active');
-  img.style.opacity = '0';
-  video.style.display = 'block';
-  video.currentTime = 0;
-  const playPromise = video.play();
-  if (playPromise && playPromise.catch) playPromise.catch(function() {});
-}
-
-function stopCardVideo(card) {
-  const video = card.querySelector('video.pcard-visual-video');
-  const img = card.querySelector('img.pcard-visual-img');
-  if (!video || !img) return;
-  video.pause();
-  video.style.display = 'none';
-  img.style.opacity = '1';
-  card.classList.remove('video-active');
-}
-
-// ── SKL Inline Floating Video Popup — 21st Dev Style ──────────────────────
-
-var _sklPopup      = null;
-var _sklVideo      = null;
-var _sklBackdrop   = null;
-var _sklHoldTimer  = null;
-var _sklHoldCard   = null;
-var _sklIsMuted    = true;
-var _sklProgressRaf = null;
-
-function _sklInit() {
-  _sklPopup    = document.getElementById('sklFloatingPopup');
-  _sklVideo    = document.getElementById('sklFpVideo');
-  _sklBackdrop = document.getElementById('sklPopupBackdrop');
-}
-
-function _sklPosition(card) {
-  if (!_sklPopup || !card) return;
-  var isMobile = window.innerWidth <= 768;
-  if (isMobile) {
-    _sklPopup.style.left   = '50%';
-    _sklPopup.style.top    = 'auto';
-    _sklPopup.style.bottom = '12px';
-    _sklPopup.style.right  = 'auto';
-    return;
-  }
-  var rect    = card.getBoundingClientRect();
-  var pw      = 340;
-  var margin  = 12;
-  var vw      = window.innerWidth;
-  var vh      = window.innerHeight;
-  var left = rect.right + margin;
-  var top  = rect.top;
-  if (left + pw > vw - margin) { left = rect.left - pw - margin; }
-  if (left < margin) { left = Math.max(margin, rect.left + (rect.width / 2) - (pw / 2)); }
-  var popupH = 340;
-  if (top + popupH > vh - margin) { top = vh - popupH - margin; }
-  if (top < margin) top = margin;
-  _sklPopup.style.left   = Math.round(left) + 'px';
-  _sklPopup.style.top    = Math.round(top) + 'px';
-  _sklPopup.style.bottom = 'auto';
-  _sklPopup.style.right  = 'auto';
-}
-
-function sklOpenPopup(card) {
-  if (!_sklPopup) _sklInit();
-  if (!_sklPopup || !_sklVideo) return;
-  var src   = card.dataset.video;
+  var num   = card.dataset.num   || '';
+  var tag   = card.dataset.tag   || '';
   var title = card.dataset.title || '';
   var desc  = card.dataset.desc  || '';
-  var num   = card.dataset.num   ? 'Nº ' + card.dataset.num : '';
-  var tag   = card.dataset.tag   || '';
-  document.getElementById('sklFpNum').textContent   = num;
-  document.getElementById('sklFpTag').textContent   = tag;
-  document.getElementById('sklFpTitle').textContent = title;
-  document.getElementById('sklFpDesc').textContent  = desc;
-  _sklVideo.src = src;
-  _sklVideo.muted = true;
-  _sklIsMuted = true;
-  _sklUpdateMuteIcon();
-  _sklVideo.load();
-  _sklPopup.classList.remove('closing');
-  _sklPosition(card);
-  _sklPopup.style.display    = 'flex';
-  _sklBackdrop.style.display = 'block';
-  document.body.classList.add('skl-popup-open');
-  var dot  = document.getElementById('cur-dot');
-  var ring = document.getElementById('cur-ring');
+  var vsrc  = card.dataset.video || '';
+  var isrc  = card.dataset.img   || '';
+
+  // Page 1 content
+  document.getElementById('sklNum').textContent   = num ? 'Nº ' + num : '';
+  document.getElementById('sklTag').textContent   = tag;
+  document.getElementById('sklTitle').textContent = title;
+  document.getElementById('sklDesc').textContent  = desc;
+
+  // Page 2 content
+  document.getElementById('sklDetNum').textContent   = num ? 'Nº ' + num : '';
+  document.getElementById('sklDetTitle').textContent = title;
+  var specList = SKL_SPECS[num] || [];
+  document.getElementById('sklSpecs').innerHTML =
+    specList.map(function(s) { return '<li>' + s + '</li>'; }).join('');
+
+  // WhatsApp link with product name pre-filled
+  var waBtn = document.getElementById('sklWaBtn');
+  if (waBtn) waBtn.href = 'https://wa.me/918879552022?text=Hi%2C%20I%20want%20to%20inquire%20about%20' + encodeURIComponent(title);
+
+  // Media — video takes priority over image
+  var controls = document.getElementById('sklVidControls');
+  if (vsrc) {
+    _vid.src = vsrc;
+    _vid.muted = true; _isMuted = true;
+    _vid.load();
+    _vid.classList.add('skl-active');
+    _img.classList.remove('skl-active');
+    if (controls) controls.style.display = 'flex';
+    _updateMuteIcon();
+    _vid.play().catch(function() {});
+    _startProgress();
+  } else if (isrc) {
+    _img.src = isrc; _img.alt = title;
+    _img.classList.add('skl-active');
+    _vid.classList.remove('skl-active');
+    if (controls) controls.style.display = 'none';
+    _stopProgress();
+  }
+
+  // Always start on page 1
+  if (_slides) _slides.classList.remove('show-details');
+
+  // Position & animate in
+  _pPosition(card);
+  _p.style.display = 'flex';
+  _bd.style.display = 'block';
+  _p.classList.remove('skl-leaving');
+  void _p.offsetWidth; // force reflow for animation restart
+  _p.classList.add('skl-entering');
+  document.body.classList.add('skl-open');
+  _isOpen = true;
+
+  var dot = document.getElementById('cur-dot'), ring = document.getElementById('cur-ring');
   if (dot)  dot.style.opacity  = '0';
   if (ring) ring.style.opacity = '0';
-  _sklVideo.play().catch(function(){});
-  _sklStartProgress();
 }
 
-function sklClosePopup() {
-  if (!_sklPopup) return;
-  _sklPopup.classList.add('closing');
+function sklClose() {
+  if (!_p || !_isOpen) return;
+  _isOpen = false;
+  _p.classList.remove('skl-entering');
+  _p.classList.add('skl-leaving');
   setTimeout(function() {
-    if (!_sklPopup) return;
-    _sklPopup.style.display    = 'none';
-    _sklPopup.classList.remove('closing');
-    _sklBackdrop.style.display = 'none';
-    document.body.classList.remove('skl-popup-open');
-    if (_sklVideo) { _sklVideo.pause(); _sklVideo.src = ''; }
-    _sklStopProgress();
-    var dot  = document.getElementById('cur-dot');
-    var ring = document.getElementById('cur-ring');
+    _p.style.display = 'none';
+    _p.classList.remove('skl-leaving');
+    _bd.style.display = 'none';
+    document.body.classList.remove('skl-open');
+    if (_vid) { _vid.pause(); _vid.src = ''; _vid.classList.remove('skl-active'); }
+    if (_img) { _img.src = ''; _img.classList.remove('skl-active'); }
+    _stopProgress();
+    var dot = document.getElementById('cur-dot'), ring = document.getElementById('cur-ring');
     if (dot)  dot.style.opacity  = '1';
     if (ring) ring.style.opacity = '1';
-  }, 220);
+  }, 200);
 }
+
+function sklToDetails() { if (_slides) _slides.classList.add('show-details'); }
+function sklToMedia()   { if (_slides) _slides.classList.remove('show-details'); }
 
 function sklToggleMute() {
-  if (!_sklVideo) return;
-  _sklIsMuted = !_sklIsMuted;
-  _sklVideo.muted = _sklIsMuted;
-  _sklUpdateMuteIcon();
+  if (!_vid) return;
+  _isMuted = !_isMuted;
+  _vid.muted = _isMuted;
+  _updateMuteIcon();
 }
 
-function _sklUpdateMuteIcon() {
-  var w1 = document.getElementById('sklWave1');
-  var w2 = document.getElementById('sklWave2');
-  var ml = document.getElementById('sklMuteLine');
-  var ml2= document.getElementById('sklMuteLine2');
+function _updateMuteIcon() {
+  var w1 = document.getElementById('sklW1'), w2 = document.getElementById('sklW2');
+  var m1 = document.getElementById('sklM1'), m2 = document.getElementById('sklM2');
   if (!w1) return;
-  if (_sklIsMuted) {
-    w1.style.display = 'none'; w2.style.display = 'none';
-    ml.style.display = 'block'; ml2.style.display = 'block';
-  } else {
-    w1.style.display = 'block'; w2.style.display = 'block';
-    ml.style.display = 'none'; ml2.style.display = 'none';
-  }
+  w1.style.display = _isMuted ? 'none'  : 'block';
+  w2.style.display = _isMuted ? 'none'  : 'block';
+  m1.style.display = _isMuted ? 'block' : 'none';
+  m2.style.display = _isMuted ? 'block' : 'none';
 }
 
-function _sklStartProgress() {
-  _sklStopProgress();
-  var bar = document.getElementById('sklFpProgress');
-  if (!bar || !_sklVideo) return;
-  function step() {
-    if (_sklVideo && _sklVideo.duration) {
-      bar.style.width = ((_sklVideo.currentTime / _sklVideo.duration) * 100) + '%';
-    }
-    _sklProgressRaf = requestAnimationFrame(step);
-  }
-  _sklProgressRaf = requestAnimationFrame(step);
+function _startProgress() {
+  _stopProgress();
+  var bar = document.getElementById('sklProgress');
+  if (!bar || !_vid) return;
+  (function tick() {
+    if (_vid && _vid.duration)
+      bar.style.width = (_vid.currentTime / _vid.duration * 100) + '%';
+    _raf = requestAnimationFrame(tick);
+  })();
 }
-
-function _sklStopProgress() {
-  if (_sklProgressRaf) { cancelAnimationFrame(_sklProgressRaf); _sklProgressRaf = null; }
-  var bar = document.getElementById('sklFpProgress');
+function _stopProgress() {
+  if (_raf) { cancelAnimationFrame(_raf); _raf = null; }
+  var bar = document.getElementById('sklProgress');
   if (bar) bar.style.width = '0%';
 }
 
-function _sklScheduleHold(card) {
-  _sklCancelHold();
-  _sklHoldCard = card;
+function _scheduleHold(card) {
+  _cancelHold();
+  _holdCard = card;
   card.classList.add('skl-holding');
-  _sklHoldTimer = setTimeout(function() {
+  _holdTimer = setTimeout(function() {
     card.classList.remove('skl-holding');
-    _sklHoldCard = null;
-    sklOpenPopup(card);
+    _holdCard = null;
+    sklOpen(card);
   }, 3000);
 }
-
-function _sklCancelHold() {
-  if (_sklHoldTimer) { clearTimeout(_sklHoldTimer); _sklHoldTimer = null; }
-  if (_sklHoldCard) { _sklHoldCard.classList.remove('skl-holding'); _sklHoldCard = null; }
+function _cancelHold() {
+  if (_holdTimer) { clearTimeout(_holdTimer); _holdTimer = null; }
+  if (_holdCard)  { _holdCard.classList.remove('skl-holding'); _holdCard = null; }
 }
 
+// Keep old names working (onclick= attributes in HTML still use these)
+function openProductPopup(card)  { sklOpen(card); }
+function closeProductPopup()     { sklClose(); }
+function sklClosePopup()         { sklClose(); }
+
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { closeProductPopup(); sklClosePopup(); }
+  if (e.key === 'Escape') sklClose();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  _sklInit();
-  document.querySelectorAll('.pcard-od[data-video]').forEach(function(card) {
-    var visual = card.querySelector('.pcard-visual');
-    if (visual) {
-      var ring = document.createElement('div');
-      ring.className = 'skl-hold-ring';
-      ring.innerHTML = '<svg viewBox="0 0 32 32"><circle class="skl-ring-track" cx="16" cy="16" r="14"/><circle class="skl-ring-fill" cx="16" cy="16" r="14"/></svg>';
-      visual.appendChild(ring);
+  _pInit();
+  document.querySelectorAll('.pcard-od').forEach(function(card) {
+    // Inject hold-progress ring only on video cards
+    if (card.dataset.video) {
+      var visual = card.querySelector('.pcard-visual');
+      if (visual && !visual.querySelector('.skl-hold-ring')) {
+        var ringEl = document.createElement('div');
+        ringEl.className = 'skl-hold-ring';
+        ringEl.innerHTML = '<svg viewBox="0 0 32 32"><circle class="skl-ring-track" cx="16" cy="16" r="14"/><circle class="skl-ring-fill" cx="16" cy="16" r="14"/></svg>';
+        visual.appendChild(ringEl);
+      }
+      card.addEventListener('mouseenter', function() { _scheduleHold(card); });
+      card.addEventListener('mouseleave', function() { _cancelHold(); });
+      card.addEventListener('touchstart',  function() { _scheduleHold(card); }, { passive: true });
+      card.addEventListener('touchend',    function() { _cancelHold(); });
+      card.addEventListener('touchcancel', function() { _cancelHold(); });
     }
-    card.addEventListener('click', function(e) {
-      if (e.target.closest('a')) return;
-      _sklCancelHold();
-      sklOpenPopup(card);
-    });
-    card.addEventListener('mouseenter', function() { _sklScheduleHold(card); });
-    card.addEventListener('mouseleave', function() { _sklCancelHold(); });
-    card.addEventListener('touchstart', function() { _sklScheduleHold(card); }, { passive: true });
-    card.addEventListener('touchend',    function() { _sklCancelHold(); });
-    card.addEventListener('touchcancel', function() { _sklCancelHold(); });
   });
 });
 </script>
 
-<!-- ════════ PRODUCT 3D POPUP ════════ -->
-<div id="productPopup" onclick="closeProductPopup()" style="position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(40px) saturate(1.8);-webkit-backdrop-filter:blur(40px) saturate(1.8);cursor:default;">
-  <div class="pp-modal" onclick="event.stopPropagation()" style="cursor:default;">
-    <button class="pp-close" onclick="closeProductPopup()">✕</button>
+<!-- ════════ SKL FLOATING PRODUCT POPUP — 21st Dev Edition ════════ -->
+<div id="sklPopup" role="dialog" aria-modal="true" aria-label="Product details">
+  <div class="skl-slides" id="sklSlides">
 
-    <!-- Image version -->
-    <div id="ppImgWrap" class="pp-img-wrap" style="display:none;">
-      <img id="ppImg" src="" alt=""/>
+    <!-- ── Page 1 : Media (video / image) ── -->
+    <div class="skl-pg skl-pg-media">
+      <div class="skl-media-wrap">
+        <video id="sklVid" muted loop playsinline preload="metadata"></video>
+        <img   id="sklImg" src="" alt="" />
+        <button class="skl-close-btn" onclick="sklClose()" aria-label="Close">✕</button>
+        <div class="skl-vid-controls" id="sklVidControls">
+          <button class="skl-mute-btn" onclick="sklToggleMute()" aria-label="Toggle mute">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path id="sklW1" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              <path id="sklW2" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <line id="sklM1" x1="23" y1="9" x2="17" y2="15" style="display:none"></line>
+              <line id="sklM2" x1="17" y1="9" x2="23" y2="15" style="display:none"></line>
+            </svg>
+          </button>
+          <div class="skl-progress-track"><div id="sklProgress"></div></div>
+        </div>
+      </div>
+
+      <div class="skl-card-info">
+        <div class="skl-card-meta">
+          <div class="skl-meta-left">
+            <span class="skl-num" id="sklNum"></span>
+            <span class="skl-tag" id="sklTag"></span>
+          </div>
+          <button class="skl-details-btn" onclick="sklToDetails()">Specs ↗</button>
+        </div>
+        <div class="skl-card-divider"></div>
+        <div class="skl-card-title" id="sklTitle"></div>
+        <div class="skl-card-desc"  id="sklDesc"></div>
+      </div>
+
+      <div class="skl-card-footer">
+        <a href="#contact" class="skl-cta-pill" onclick="sklClose()">Request Sample →</a>
+        <span class="skl-esc-hint">ESC to close</span>
+      </div>
     </div>
 
-    <!-- Premium text card version -->
-    <div id="ppTextCard" class="pp-text-card" style="display:none;">
-      <div class="pp-tc-num" id="ppTcNum"></div>
-      <div class="pp-tc-icon" id="ppTcIcon"></div>
-      <div class="pp-tc-title" id="ppTcTitle"></div>
-      <div class="pp-tc-rule"></div>
-      <div class="pp-tc-desc" id="ppTcDesc"></div>
-      <a href="#contact" class="pp-tc-btn" onclick="closeProductPopup()">Request Sample →</a>
+    <!-- ── Page 2 : Specs / Details ── -->
+    <div class="skl-pg skl-pg-details">
+      <div class="skl-det-header">
+        <button class="skl-back-btn" onclick="sklToMedia()">← Back</button>
+        <span class="skl-det-num" id="sklDetNum"></span>
+        <button class="skl-close-btn" onclick="sklClose()" aria-label="Close" style="position:static;flex-shrink:0;">✕</button>
+      </div>
+
+      <div class="skl-det-body">
+        <div class="skl-det-title" id="sklDetTitle"></div>
+        <div class="skl-det-rule"></div>
+        <ul class="skl-specs" id="sklSpecs"></ul>
+      </div>
+
+      <div class="skl-det-footer">
+        <a id="sklWaBtn" href="https://wa.me/918879552022" class="skl-wa-btn" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12.006 2C6.478 2 2 6.477 2 12.005c0 1.78.466 3.448 1.28 4.896L2 22l5.237-1.267A10.007 10.007 0 0012.006 22C17.533 22 22 17.523 22 12.005 22 6.477 17.533 2 12.006 2z"/>
+          </svg>
+          WhatsApp
+        </a>
+        <a href="#contact" class="skl-sample-btn" onclick="sklClose()">Sample Kit →</a>
+      </div>
     </div>
 
-    <div class="pp-footer">
-      <span class="pp-footer-num" id="ppFootNum"></span>
-      <span class="pp-footer-title" id="ppFootTitle"></span>
-      <a href="#contact" class="pp-footer-btn" onclick="closeProductPopup()">Inquire →</a>
-    </div>
   </div>
 </div>
+<!-- Transparent backdrop — click outside to close -->
+<div id="sklBackdrop" onclick="sklClose()" style="display:none;position:fixed;inset:0;z-index:100000;background:transparent;"></div>
 
-<!-- SKL Inline Floating Video Popup -->
-<div id="sklFloatingPopup" role="dialog" aria-modal="true" aria-label="Product video preview">
-  <div class="skl-fp-video-wrap">
-    <video id="sklFpVideo" muted loop playsinline preload="metadata"></video>
-    <button id="sklFpClose" onclick="sklClosePopup()" aria-label="Close video">✕</button>
-    <button id="sklFpMute" onclick="sklToggleMute()" aria-label="Toggle mute">
-      <svg id="sklMuteIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <path id="sklWave1" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        <path id="sklWave2" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        <line id="sklMuteLine" x1="23" y1="9" x2="17" y2="15" style="display:none"></line>
-        <line id="sklMuteLine2" x1="17" y1="9" x2="23" y2="15" style="display:none"></line>
-      </svg>
-    </button>
-    <div id="sklFpProgress"></div>
-  </div>
-  <div class="skl-fp-info">
-    <div class="skl-fp-meta">
-      <span class="skl-fp-num" id="sklFpNum"></span>
-      <span class="skl-fp-tag" id="sklFpTag"></span>
-    </div>
-    <div class="skl-fp-title" id="sklFpTitle"></div>
-    <div class="skl-fp-divider"></div>
-    <div class="skl-fp-desc" id="sklFpDesc"></div>
-  </div>
-  <div class="skl-fp-footer">
-    <a href="#contact" class="skl-fp-cta" id="sklFpCta" onclick="sklClosePopup()">Request Sample →</a>
-    <span class="skl-fp-hold-hint">ESC to close</span>
-  </div>
-</div>
-<div id="sklPopupBackdrop" onclick="sklClosePopup()" style="display:none;position:fixed;inset:0;z-index:100000;background:transparent;"></div>
-
-<style>
-/* ── Product Popup — Apple Premium Style ── */
-.pp-modal {
-  position: relative;
-  width: min(480px, 94vw);
-  /* Apple-style glassmorphism */
-  background: rgba(22, 18, 12, 0.72);
-  backdrop-filter: blur(48px) saturate(2);
-  -webkit-backdrop-filter: blur(48px) saturate(2);
-  border: 1px solid rgba(255,255,255,.10);
-  border-bottom-color: rgba(255,255,255,.05);
-  border-radius: 20px;
-  box-shadow:
-    0 0 0 0.5px rgba(255,255,255,.08),
-    0 48px 100px rgba(0,0,0,.7),
-    0 8px 32px rgba(0,0,0,.4),
-    inset 0 1px 0 rgba(255,255,255,.08);
-  overflow: hidden;
-  cursor: default;
-  animation: ppModalIn .38s cubic-bezier(.23,1,.32,1);
-}
-@keyframes ppModalIn {
-  from { opacity:0; transform: scale(.94) translateY(20px); }
-  to   { opacity:1; transform: scale(1) translateY(0); }
-}
-
-/* ── Close button — Apple pill style ── */
-.pp-close {
-  position: absolute; top: 14px; right: 14px; z-index: 10;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.15);
-  cursor: pointer;
-  font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.7);
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s, color .2s;
-  backdrop-filter: blur(8px);
-}
-.pp-close:hover {
-  background: rgba(255,255,255,.22);
-  color: #fff;
-}
-
-/* ── Image wrap ── */
-.pp-img-wrap {
-  display: flex; align-items: center; justify-content: center;
-  padding: 3rem 2.5rem 1.5rem;
-  background: linear-gradient(160deg, rgba(201,169,110,.06) 0%, transparent 70%);
-}
-.pp-img-wrap img {
-  width: 100%; max-width: 340px; height: auto; display: block;
-  border-radius: 10px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(201,169,110,.12);
-  animation: ppFloat 4s ease-in-out infinite;
-}
-
-/* ── Text card ── */
-.pp-text-card {
-  padding: 3.2rem 2.8rem 2rem;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-}
-.pp-tc-num {
-  font-family: var(--ff-mono); font-size: .38rem; letter-spacing: .35em;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, rgba(201,169,110,.6), rgba(201,169,110,.3));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  margin-bottom: 1.6rem;
-}
-.pp-tc-icon {
-  font-size: 2.8rem; margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 16px rgba(201,169,110,.25));
-  animation: ppFloat 3.5s ease-in-out infinite;
-}
-.pp-tc-title {
-  font-family: var(--ff-display); font-size: 1.9rem; font-weight: 300;
-  color: rgba(245, 238, 220, .95); line-height: 1.2; margin-bottom: 1.2rem;
-  letter-spacing: -.01em;
-}
-.pp-tc-rule {
-  width: 32px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,169,110,.6), transparent);
-  margin: 0 auto 1.4rem;
-}
-.pp-tc-desc {
-  font-size: .7rem; font-weight: 300; line-height: 1.9;
-  color: rgba(220,210,185,.45); margin-bottom: 2rem; max-width: 300px;
-}
-.pp-tc-btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--ff-mono); font-size: .4rem; letter-spacing: .22em;
-  text-transform: uppercase; color: rgba(201,169,110,.9); text-decoration: none;
-  padding: .8rem 2rem;
-  background: rgba(201,169,110,.08);
-  border: 1px solid rgba(201,169,110,.2);
-  border-radius: 30px;
-  transition: background .3s, border-color .3s, color .3s;
-  backdrop-filter: blur(8px);
-}
-.pp-tc-btn:hover {
-  background: rgba(201,169,110,.16);
-  border-color: rgba(201,169,110,.45);
-  color: rgba(201,169,110,1);
-}
-
-/* ── Footer ── */
-.pp-footer {
-  display: flex; align-items: center; gap: 1rem;
-  padding: .9rem 1.6rem;
-  border-top: 1px solid rgba(255,255,255,.07);
-  background: rgba(0,0,0,.15);
-}
-.pp-footer-num {
-  font-family: var(--ff-mono); font-size: .38rem; letter-spacing: .22em;
-  color: rgba(201,169,110,.3); white-space: nowrap;
-}
-.pp-footer-title {
-  font-family: var(--ff-display); font-size: .9rem; font-weight: 400;
-  color: rgba(240,230,200,.5); flex: 1; min-width: 0;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.pp-footer-btn {
-  font-family: var(--ff-mono); font-size: .38rem; letter-spacing: .2em;
-  text-transform: uppercase; color: rgba(201,169,110,.8); text-decoration: none;
-  white-space: nowrap; transition: color .2s;
-}
-.pp-footer-btn:hover { color: var(--gold); }
-
-.pcard-click-hint {
-  position: absolute; bottom: .6rem; right: .6rem;
-  font-family: var(--ff-mono); font-size: .33rem; letter-spacing: .18em;
-  text-transform: uppercase; color: rgba(255,255,255,.7);
-  background: rgba(15,13,10,.6); padding: .28rem .55rem;
-  backdrop-filter: blur(4px); pointer-events: none;
-}
-
-@keyframes ppFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-@keyframes ppSlideIn {
-  from { opacity: 0; transform: scale(.92) translateY(16px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
-}
-@keyframes productSpin {
-  0%   { transform: perspective(900px) rotateY(0deg); }
-  100% { transform: perspective(900px) rotateY(360deg); }
-}
-
-@media (max-width: 480px) {
-  .pp-modal { border-radius: 16px; }
-  .pp-tc-title { font-size: 1.55rem; }
-  .pp-img-wrap { padding: 2rem 1rem 1rem; }
-  .pp-text-card { padding: 2.5rem 1.5rem 1.5rem; }
-  .pp-footer { flex-wrap: wrap; }
-  .pp-footer-title { flex: 1 0 100%; order: -1; text-align: center; }
-}
-</style>
 
 <!-- ════════ INDUSTRY IMAGE LIGHTBOX ════════ -->
 <div id="indImgModal" style="position:fixed;inset:0;z-index:99997;display:none;align-items:center;justify-content:center;padding:1.5rem;background:rgba(10,8,6,.93);backdrop-filter:blur(22px);">
