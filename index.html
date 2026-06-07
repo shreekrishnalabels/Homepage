@@ -1838,197 +1838,182 @@ html { scroll-behavior:smooth; }
 </section>
 
 
-<!-- ════════ IV. SHOWCASE — PRODUCT CATALOGUE ════════ -->
+<!-- ════════ IV. SHOWCASE — PRODUCT CAROUSEL ════════ -->
 <section id="showcase" class="od-section">
   <div class="s-header-bar" style="background:rgba(15,13,10,.8);border-color:rgba(255,255,255,.07);">
     <span class="s-roman" style="color:rgba(201,169,110,.5);">III. Product Catalogue · Label Collection</span>
     <span class="s-filed" style="color:rgba(240,230,200,.3);">Filed under <strong style="color:rgba(240,230,200,.5);">Woven · Satin · Hang Tags · Embroidered</strong></span>
     <span class="s-counter" style="color:rgba(201,169,110,.4);">004 / 008</span>
   </div>
-  <div style="background:var(--ink);padding:5rem 3.5rem 4rem;">
 
-    <!-- Header with Logo -->
-    <div style="text-align:center;margin-bottom:4.5rem;">
-      <div class="s-eyebrow reveal" style="justify-content:center;">Our Label Collection</div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin:1.5rem 0;">
-        <div style="height:1px;width:60px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.4));"></div>
-        <div style="background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:center;">
-          <img src="MAINLOGO.png" alt="Shree Krishna Labels" style="height:48px;width:48px;object-fit:contain;mix-blend-mode:lighten;opacity:.9;"/>
-        </div>
-        <div style="height:1px;width:60px;background:linear-gradient(90deg,rgba(201,169,110,.4),transparent);"></div>
-      </div>
-      <h2 class="s-h2 s-h2-cream reveal reveal-delay-1">The Signature Every<br/><em>Garment Deserves.</em></h2>
-      <p style="font-family:var(--ff-mono);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-top:1rem;">15 Premium Categories · Custom Manufacturing · Est. 1998</p>
+  <!-- CAROUSEL WRAPPER -->
+  <div id="skl-carousel" style="position:relative;width:100%;height:100vh;overflow:hidden;background-color:#1a1208;transition:background-color 650ms cubic-bezier(0.4,0,0.2,1);">
+
+    <!-- Grain overlay -->
+    <div style="position:absolute;inset:0;pointer-events:none;z-index:50;opacity:0.35;background-image:url('data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E');background-size:200px 200px;"></div>
+
+    <!-- Ghost product name text -->
+    <div id="skl-ghost-text" style="position:absolute;inset-x:0;top:16%;display:flex;align-items:center;justify-content:center;pointer-events:none;user-select:none;z-index:2;transition:opacity 400ms;">
+      <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(60px,20vw,280px);font-weight:700;color:rgba(201,169,110,0.12);line-height:1;text-transform:uppercase;letter-spacing:-0.02em;white-space:nowrap;font-style:italic;" id="skl-ghost-label">WOVEN</span>
     </div>
 
-    <!-- Product Grid -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;border:1px solid rgba(255,255,255,.05);margin-bottom:1.5px;" class="reveal">
-
-      <!-- Card 1: Woven Labels -->
-      <a href="https://products.shreekrishnalabels.in/woven-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 01 · Fabric</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="KAHWA CO.png" alt="Woven Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Woven Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">High-density polyester & cotton weave · 1200 DPI precision</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-        <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.4),transparent);opacity:0;transition:opacity .3s;" class="card-bar"></div>
-      </a>
-
-      <!-- Card 2: Satin Labels -->
-      <a href="https://products.shreekrishnalabels.in/satin-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 02 · Luxury</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="satin labels.png" alt="Satin Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Satin Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Ultra-soft finish · Lingerie & luxury fashion</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 3: Hang Tags -->
-      <a href="https://products.shreekrishnalabels.in/hang-tags" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 03 · Paper</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="hang tag.png" alt="Hang Tags" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Hang Tags</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Board, kraft & specialty · Gold foil & die-cut</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 4: Heat Transfer -->
-      <a href="https://products.shreekrishnalabels.in/heat-transfer-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 04 · Transfer</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="activewear.png" alt="Heat Transfer Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Heat Transfer Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">No-label-feel · Sportswear & activewear</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 5: Embroidered Badges -->
-      <a href="https://products.shreekrishnalabels.in/embroidered-badges" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 05 · Embroidery</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="Embroidered Badges.png" alt="Embroidered Badges" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Embroidered Badges</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Custom thread work · Multicolour precision</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 6: Barcode Labels -->
-      <a href="https://products.shreekrishnalabels.in/barcode-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 06 · Barcode</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="barcode satin labels.png" alt="Barcode Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Barcode Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">GS1-compliant · Retail & export ready</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 7: Wash Care -->
-      <a href="https://products.shreekrishnalabels.in/care-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 07 · Compliance</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="wash care.png" alt="Wash Care Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Wash Care Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Multi-language · EU, US & global compliant</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 8: Cotton Labels -->
-      <a href="https://products.shreekrishnalabels.in/cotton-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 08 · Natural</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="KAHWA CO.png" alt="Cotton Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Cotton Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Organic & sustainable · Eco-conscious brands</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 9: Leather Labels -->
-      <a href="https://products.shreekrishnalabels.in/leather-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 09 · Leather</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="BOSS.jpeg" alt="Leather Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Leather Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Genuine & PU leather · Denim & premium brands</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 10: Size Labels -->
-      <a href="https://products.shreekrishnalabels.in/size-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 10 · Size</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="wash care.png" alt="Size Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Size Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">XS to 5XL range · Custom sizing charts</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 11: Printed Labels -->
-      <a href="https://products.shreekrishnalabels.in/printed-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.05);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 11 · Print</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="satin labels.png" alt="Printed Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">Printed Labels</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">Digital & offset print · Full colour branding</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
-      <!-- Card 12: TPU Labels -->
-      <a href="https://products.shreekrishnalabels.in/tpu-labels" style="text-decoration:none;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.03);padding:2rem;transition:background .3s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.06)&apos;" onmouseout="this.style.background=&apos;rgba(255,255,255,.03)&apos;">
-        <div style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:.8rem;">Nº 12 · 3D</div>
-        <div style="height:140px;overflow:hidden;border-radius:4px;margin-bottom:1.2rem;background:rgba(201,169,110,.05);">
-          <img src="3D.png" alt="TPU Labels" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s;" onmouseover="this.style.transform=&apos;scale(1.05)&apos;" onmouseout="this.style.transform=&apos;scale(1)&apos;"/>
-        </div>
-        <div style="font-family:var(--ff-display);font-size:1.1rem;font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;">TPU / PVC Patches</div>
-        <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.15em;color:rgba(240,230,200,.35);line-height:1.7;">3D rubber patches · Streetwear & denim</div>
-        <div style="margin-top:1rem;font-family:var(--ff-mono);font-size:.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;">View Product →</div>
-      </a>
-
+    <!-- Top-left brand -->
+    <div style="position:absolute;top:1.5rem;left:2rem;z-index:60;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <img src="MAINLOGO.png" alt="SKL" style="height:32px;width:32px;object-fit:contain;opacity:0.85;mix-blend-mode:lighten;"/>
+        <span style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,169,110,.7);">Shree Krishna Labels</span>
+      </div>
     </div>
 
-    <!-- View All CTA -->
-    <div style="text-align:center;margin-top:3.5rem;" class="reveal">
-      <div style="font-family:var(--ff-mono);font-size:.42rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,169,110,.35);margin-bottom:1.5rem;">+ 3 More Categories Available</div>
-      <a href="https://products.shreekrishnalabels.in" target="_blank" style="display:inline-flex;align-items:center;gap:1rem;font-family:var(--ff-mono);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;padding:1rem 2.5rem;border:1px solid rgba(201,169,110,.4);color:var(--gold);text-decoration:none;position:relative;overflow:hidden;transition:color .35s;" onmouseover="this.style.background=&apos;rgba(201,169,110,.08)&apos;;this.style.borderColor=&apos;rgba(201,169,110,.7)&apos;" onmouseout="this.style.background=&apos;transparent&apos;;this.style.borderColor=&apos;rgba(201,169,110,.4)&apos;">
-        <img src="MAINLOGO.png" alt="" style="height:18px;width:18px;object-fit:contain;mix-blend-mode:lighten;opacity:.7;"/>
-        View Full Product Catalogue →
-      </a>
+    <!-- Carousel items -->
+    <div id="skl-carousel-items" style="position:absolute;inset:0;z-index:3;">
     </div>
 
-    <!-- Bottom stats (keeping original) -->
-    <div class="showcase-stats reveal" style="margin-top:4rem;">
-      <div class="sh-stat">
-        <div class="sh-stat-num">1200<span>+</span></div>
-        <div class="sh-stat-label">DPI Weave Quality</div>
+    <!-- Bottom-left info + nav -->
+    <div style="position:absolute;bottom:2rem;left:2rem;z-index:60;max-width:340px;">
+      <div id="skl-product-name" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:500;color:var(--cream-light);letter-spacing:.04em;margin-bottom:.4rem;transition:opacity 300ms;">Woven Labels</div>
+      <div id="skl-product-desc" style="font-family:var(--ff-mono);font-size:.45rem;letter-spacing:.12em;color:rgba(240,230,200,.45);line-height:1.8;margin-bottom:1.2rem;transition:opacity 300ms;">High-density polyester & cotton · 1200 DPI precision weave</div>
+      <div style="display:flex;gap:.75rem;align-items:center;">
+        <button id="skl-prev" onclick="sklNavigate('prev')" style="width:48px;height:48px;border-radius:50%;background:transparent;border:2px solid rgba(201,169,110,.5);color:rgba(201,169,110,.8);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 200ms;" onmouseover="this.style.background='rgba(201,169,110,.12)';this.style.borderColor='rgba(201,169,110,.9)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(201,169,110,.5)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <button id="skl-next" onclick="sklNavigate('next')" style="width:48px;height:48px;border-radius:50%;background:transparent;border:2px solid rgba(201,169,110,.5);color:rgba(201,169,110,.8);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 200ms;" onmouseover="this.style.background='rgba(201,169,110,.12)';this.style.borderColor='rgba(201,169,110,.9)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(201,169,110,.5)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <span style="font-family:var(--ff-mono);font-size:.38rem;letter-spacing:.2em;color:rgba(201,169,110,.35);padding-left:.5rem;" id="skl-counter">01 / 08</span>
       </div>
-      <div class="sh-stat">
-        <div class="sh-stat-num">50<span>M+</span></div>
-        <div class="sh-stat-label">Labels Per Year</div>
-      </div>
-      <div class="sh-stat">
-        <div class="sh-stat-num">7<span> Days</span></div>
-        <div class="sh-stat-label">Sample Turnaround</div>
-      </div>
-      <div class="sh-stat">
-        <div class="sh-stat-num">ISO<span> 9001</span></div>
-        <div class="sh-stat-label">Quality Certified</div>
-      </div>
+    </div>
+
+    <!-- Bottom-right: Explore CTA -->
+    <a id="skl-explore-btn" href="https://products.shreekrishnalabels.in/woven-labels" target="_blank" style="position:absolute;bottom:2rem;right:2rem;z-index:60;display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.1rem,3vw,2rem);font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:.04em;opacity:.85;transition:opacity 200ms;font-style:italic;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">
+      Explore Product
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <!-- Dot indicators -->
+    <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:60;display:flex;gap:6px;" id="skl-dots"></div>
+  </div>
+
+  <!-- Stats bar (preserved) -->
+  <div style="background:var(--ink);">
+    <div class="showcase-stats">
+      <div class="sh-stat"><div class="sh-stat-num">1200<span>+</span></div><div class="sh-stat-label">DPI Weave Quality</div></div>
+      <div class="sh-stat"><div class="sh-stat-num">50<span>M+</span></div><div class="sh-stat-label">Labels Per Year</div></div>
+      <div class="sh-stat"><div class="sh-stat-num">7<span> Days</span></div><div class="sh-stat-label">Sample Turnaround</div></div>
+      <div class="sh-stat"><div class="sh-stat-num">ISO<span> 9001</span></div><div class="sh-stat-label">Quality Certified</div></div>
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var SKL_PRODUCTS = [
+    { name: 'Woven Labels',       ghost: 'WOVEN',      desc: 'High-density polyester & cotton · 1200 DPI precision weave',  img: 'KAHWA CO.png',            url: 'https://products.shreekrishnalabels.in/woven-labels',       bg: '#1a1208' },
+    { name: 'Hang Tags',          ghost: 'HANG TAGS',  desc: 'Premium board & kraft · Gold foil, die-cut & embossing',       img: 'hang tag.png',            url: 'https://products.shreekrishnalabels.in/hang-tags',          bg: '#160f06' },
+    { name: 'Embroidered Badges', ghost: 'EMBROIDERY', desc: 'Custom thread work · Multicolour precision stitching',         img: 'Embroidered Badges.png',  url: 'https://products.shreekrishnalabels.in/embroidered-badges', bg: '#0e1008' },
+    { name: 'Heat Transfer',      ghost: 'TRANSFER',   desc: 'No-label-feel · Sportswear & activewear ready',               img: 'activewear.png',          url: 'https://products.shreekrishnalabels.in/heat-transfer-labels', bg: '#0d1218' },
+    { name: 'Satin Labels',       ghost: 'SATIN',      desc: 'Ultra-soft finish · Luxury lingerie & fashion',               img: 'satin labels.png',        url: 'https://products.shreekrishnalabels.in/satin-labels',       bg: '#180e14' },
+    { name: 'Barcode Labels',     ghost: 'BARCODE',    desc: 'GS1-compliant · Retail & global export ready',                img: 'barcode satin labels.png',url: 'https://products.shreekrishnalabels.in/barcode-labels',     bg: '#0a0f12' },
+    { name: 'Wash Care Labels',   ghost: 'WASH CARE',  desc: 'Multi-language · EU, US & international standards',           img: 'wash care.png',           url: 'https://products.shreekrishnalabels.in/care-labels',        bg: '#121810' },
+    { name: 'Leather Labels',     ghost: 'LEATHER',    desc: 'Genuine & PU leather · Denim & premium brand patches',        img: 'BOSS.jpeg',               url: 'https://products.shreekrishnalabels.in/leather-labels',     bg: '#1a1008' }
+  ];
+
+  var activeIndex = 0;
+  var isAnimating = false;
+  var isMobile = window.innerWidth < 640;
+
+  window.addEventListener('resize', function() { isMobile = window.innerWidth < 640; renderCarousel(); });
+
+  function getRole(i) {
+    var len = SKL_PRODUCTS.length;
+    if (i === activeIndex) return 'center';
+    if (i === (activeIndex + len - 1) % len) return 'left';
+    if (i === (activeIndex + 1) % len) return 'right';
+    if (i === (activeIndex + 2) % len) return 'back';
+    return 'hidden';
+  }
+
+  function getStyle(role) {
+    var base = 'position:absolute;aspect-ratio:0.6/1;transition:transform 650ms cubic-bezier(0.4,0,0.2,1),filter 650ms cubic-bezier(0.4,0,0.2,1),opacity 650ms cubic-bezier(0.4,0,0.2,1),left 650ms cubic-bezier(0.4,0,0.2,1),bottom 650ms cubic-bezier(0.4,0,0.2,1),height 650ms cubic-bezier(0.4,0,0.2,1);will-change:transform,filter,opacity;';
+    if (role === 'center') return base + 'left:50%;transform:translateX(-50%) scale(' + (isMobile?1.2:1.55) + ');filter:none;opacity:1;z-index:20;height:' + (isMobile?'62%':'90%') + ';bottom:' + (isMobile?'20%':'0') + ';cursor:pointer;';
+    if (role === 'left')   return base + 'left:' + (isMobile?'18%':'28%') + ';transform:translateX(-50%) scale(1);filter:blur(2px);opacity:0.75;z-index:10;height:' + (isMobile?'18%':'30%') + ';bottom:' + (isMobile?'28%':'10%') + ';cursor:pointer;';
+    if (role === 'right')  return base + 'left:' + (isMobile?'82%':'72%') + ';transform:translateX(-50%) scale(1);filter:blur(2px);opacity:0.75;z-index:10;height:' + (isMobile?'18%':'30%') + ';bottom:' + (isMobile?'28%':'10%') + ';cursor:pointer;';
+    if (role === 'back')   return base + 'left:50%;transform:translateX(-50%) scale(1);filter:blur(4px);opacity:0.5;z-index:5;height:' + (isMobile?'14%':'22%') + ';bottom:' + (isMobile?'28%':'10%') + ';';
+    return base + 'opacity:0;z-index:1;left:50%;height:10%;bottom:0;pointer-events:none;';
+  }
+
+  function renderCarousel() {
+    var container = document.getElementById('skl-carousel-items');
+    if (!container) return;
+
+    var items = container.querySelectorAll('.skl-item');
+    if (items.length === 0) {
+      // Build items first time
+      SKL_PRODUCTS.forEach(function(p, i) {
+        var div = document.createElement('div');
+        div.className = 'skl-item';
+        div.setAttribute('data-index', i);
+        var role = getRole(i);
+        div.setAttribute('style', getStyle(role));
+        div.innerHTML = '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:contain;object-position:bottom center;" draggable="false"/>';
+        div.addEventListener('click', function() {
+          var idx = parseInt(div.getAttribute('data-index'));
+          var r = getRole(idx);
+          if (r === 'center') {
+            window.open(SKL_PRODUCTS[idx].url, '_blank');
+          } else if (r === 'left') {
+            sklNavigate('prev');
+          } else if (r === 'right') {
+            sklNavigate('next');
+          }
+        });
+        container.appendChild(div);
+      });
+    } else {
+      items.forEach(function(el) {
+        var idx = parseInt(el.getAttribute('data-index'));
+        el.setAttribute('style', getStyle(getRole(idx)));
+      });
+    }
+
+    // Update bg
+    document.getElementById('skl-carousel').style.backgroundColor = SKL_PRODUCTS[activeIndex].bg;
+    // Ghost text
+    document.getElementById('skl-ghost-label').textContent = SKL_PRODUCTS[activeIndex].ghost;
+    // Product name + desc
+    document.getElementById('skl-product-name').textContent = SKL_PRODUCTS[activeIndex].name;
+    document.getElementById('skl-product-desc').textContent = SKL_PRODUCTS[activeIndex].desc;
+    // Explore link
+    document.getElementById('skl-explore-btn').href = SKL_PRODUCTS[activeIndex].url;
+    // Counter
+    document.getElementById('skl-counter').textContent = ('0'+(activeIndex+1)).slice(-2) + ' / ' + ('0'+SKL_PRODUCTS.length).slice(-2);
+    // Dots
+    var dotsEl = document.getElementById('skl-dots');
+    dotsEl.innerHTML = '';
+    SKL_PRODUCTS.forEach(function(_, i) {
+      var d = document.createElement('div');
+      d.style.cssText = 'width:' + (i===activeIndex?'20px':'6px') + ';height:6px;border-radius:3px;background:' + (i===activeIndex?'rgba(201,169,110,.9)':'rgba(201,169,110,.3)') + ';transition:all 400ms;';
+      dotsEl.appendChild(d);
+    });
+  }
+
+  window.sklNavigate = function(dir) {
+    if (isAnimating) return;
+    isAnimating = true;
+    var len = SKL_PRODUCTS.length;
+    activeIndex = dir === 'next' ? (activeIndex + 1) % len : (activeIndex + len - 1) % len;
+    renderCarousel();
+    setTimeout(function() { isAnimating = false; }, 650);
+  };
+
+  // Preload images
+  SKL_PRODUCTS.forEach(function(p) { var img = new Image(); img.src = p.img; });
+
+  // Init
+  document.addEventListener('DOMContentLoaded', function() { renderCarousel(); });
+  if (document.readyState !== 'loading') renderCarousel();
+})();
+</script>
 
 
 <!-- ════════ IV. CLIENTS ════════ -->
