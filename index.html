@@ -72,7 +72,7 @@
 <meta name="twitter:image" content="https://shreekrishnalabels.in/og-image.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Schema.org — Enhanced Knowledge Panel + LocalBusiness + Organization + Products -->
+<!-- Schema.org — Enhanced Knowledge Panel + LocalBusiness + Organization + WebSite + FAQPage -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -157,17 +157,7 @@
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Garment Labels & Trims",
-        "itemListElement": [
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Woven Labels","description":"High-density woven labels in polyester, cotton and satin. 1200 DPI precision weave for photorealistic branding."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Hang Tags","description":"Premium board, kraft and specialty materials. Custom die-cutting, gold foiling, and embossing."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Heat Transfer Labels","description":"Durable wash-resistant no-label-feel transfers for sportswear and activewear."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"PVC Patches","description":"3D PVC patches for streetwear, denim and premium garment brands."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Wash Care Labels","description":"Multi-language wash care labels compliant with EU, US and international standards."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Barcode Labels","description":"GS1-compliant barcode labels for retail and global export."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Satin Labels","description":"Ultra-soft satin labels for luxury lingerie and high-end fashion."}},
-          {"@type":"Offer","priceCurrency":"INR","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Shree Krishna Labels"},"itemOffered":{"@type":"Product","name":"Embroidered Badges","description":"Custom embroidered patches for brand logos, school badges and institutional emblems."}}
-        ]
+        "name": "Garment Labels & Trims"
       }
     },
     {
@@ -194,7 +184,12 @@
       "url": "https://shreekrishnalabels.in",
       "name": "Shree Krishna Labels",
       "description": "Woven labels manufacturer in Mumbai, India",
-      "publisher": {"@id": "https://shreekrishnalabels.in/#organization"}
+      "publisher": {"@id": "https://shreekrishnalabels.in/#organization"},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://shreekrishnalabels.in/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -248,24 +243,6 @@
           "acceptedAnswer": {"@type": "Answer", "text": "To contact Shree Krishna Labels, a leading label printing company in Maharashtra: Email — shreekrishnalabels@outlook.com | Phone — +91 88795 52022 | WhatsApp — wa.me/918879552022 | Address — Bldg No. 2, Rajprabha Industrial Enclave 5, Vasai East, Mumbai, Maharashtra 401208. Free sample kit available within 7 working days."}
         }
       ]
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://shreekrishnalabels.in/#aggregate-rating",
-      "itemReviewed": {"@id": "https://shreekrishnalabels.in/#business"},
-      "ratingValue": "4.9",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    {
-      "@type": "Service",
-      "name": "Custom Woven Label Manufacturing",
-      "provider": {"@id": "https://shreekrishnalabels.in/#business"},
-      "serviceType": "Garment Label Manufacturing",
-      "areaServed": {"@type": "Country", "name": "India"},
-      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Label & Trims Services"},
-      "serviceOutput": {"@type": "Product", "name": "Woven Labels, Hang Tags, PVC Patches"}
     }
   ]
 }
